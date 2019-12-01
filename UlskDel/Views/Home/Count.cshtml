@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Count";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Доставка</title>
+</head>
+<body>
+    <div class="count">
+        <h3>РАСЧЕТ СТОИМОСТИ ДОСТАВКИ</h3>
+        <p>Калькулятор позволяет рассчитать стоимость доставки из Ярославля в основные населенные пункты Российской Федерации. Для расчёта в иные населённые пункты обратитесь к нашим менеджерам.</p>
+        <form method="post" action="">
+            <p>Город назначения </p>
+            <input type="text" name="Address" />
+            <p>Вес :</p>
+            <input type="text" name="Weight" />
+            <input type="submit" value="Рассчитать" />
+        </form>
+    </div>
+</body>
+</html>
+

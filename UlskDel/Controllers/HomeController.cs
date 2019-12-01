@@ -22,10 +22,26 @@ namespace UlskDel.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Count()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public string Count(Order order)
+        {
+            return "this " + order.Weight; 
+        }
+
         [HttpGet]
         public ActionResult Buy(int id)
         {
-            ViewBag.BookId = id;
+            ViewBag.OrderId = id;
             return View();
         }
         [HttpPost]

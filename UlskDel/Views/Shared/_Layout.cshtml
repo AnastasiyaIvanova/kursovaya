@@ -19,8 +19,8 @@
     </header>
     <div class="menu">
         <ul>
-            <li>О нас</li>
-            <li>Расчет стоимости доставки</li>
+            <li>@Html.ActionLink("О нас", "About", "Home")</li>
+            <li>@Html.ActionLink("Расчет стоимости доставки", "Count", "Home")</li>
         </ul>
     </div>
     @RenderBody()

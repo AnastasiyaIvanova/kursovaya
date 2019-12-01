@@ -63,4 +63,29 @@
 
 .myfooter {
     display: flex;
+    justify-content: space-around;
+    height: 168px;
+    background-color: #7f67d0;
+    color: white;
+    padding-top: 76px;
 }
+
+.about {
+    padding: 20px;
+}
+
+.count {
+    text-align: center;
+    padding: 20px;
+}
+
+    .count>p {
+        width: 75%;
+        margin: auto;
+    }
+
+    .count form {
+        text-align: left;
+        margin-top: 20px;
+        padding-left: 43%;
+    }
