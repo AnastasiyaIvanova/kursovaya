@@ -32,11 +32,11 @@ namespace UlskDel.Controllers
             return View();
         }
 
-        [HttpPost]
-        public string Count(Order order)
-        {
-            return "this " + order.Weight; 
-        }
+        //[HttpPost]
+        //public string Count(Order order)
+        //{
+        //    return "this " + order.Address; 
+        //}
 
         [HttpGet]
         public ActionResult Buy(int id)

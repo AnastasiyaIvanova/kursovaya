@@ -9,6 +9,7 @@ namespace UlskDel.Models
     {
         public int Id { get; set; }
         public float Weight { get; set; }
+        public string Address { get; set; }
         // цена
         public int Price { get; set; }
     }

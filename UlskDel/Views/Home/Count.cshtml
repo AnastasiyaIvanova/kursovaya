@@ -9,19 +9,26 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Доставка</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=8eca35a4-b90a-4aea-868d-f6fc2c565864&lang=ru_RU" type="text/javascript">
+    </script>
 </head>
 <body>
     <div class="count">
         <h3>РАСЧЕТ СТОИМОСТИ ДОСТАВКИ</h3>
         <p>Калькулятор позволяет рассчитать стоимость доставки из Ярославля в основные населенные пункты Российской Федерации. Для расчёта в иные населённые пункты обратитесь к нашим менеджерам.</p>
         <form method="post" action="">
+            <p>Город отправления </p>
+            <input type="text" id="suggest" name="Address" />
             <p>Город назначения </p>
-            <input type="text" name="Address" />
+            <input type="text" id="suggest2" name="Recaiver" />
             <p>Вес :</p>
             <input type="text" name="Weight" />
-            <input type="submit" value="Рассчитать" />
+            <input type="button" value="Рассчитать" onclick="onClick()" />
+            <div id="map" style="width:100%; height:150px; display:none"></div>
         </form>
     </div>
 </body>
 </html>
+
+@Scripts.Render("~/scripts/script.js")
 
