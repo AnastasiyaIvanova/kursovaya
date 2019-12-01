@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Курьерская служба</title>
+</head>
+<body>
+    <div class="fill">
+        <h1>СРОЧНАЯ ДОСТАВКА ПОСЫЛОК</h1>
+        <div class="info">
+            <p>ДОКУМЕНТОВ И ГРУЗОВ ПО ВСЕМУ МИРУ С ГАРАНТИЕЙ ДОСТАВКИ ОТПРАВЛЕНИЯ ПОЛУЧАТЕЛЮ</p>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-info">Бесплатный вызов курьера</li>
+                <li class="list-group-item list-group-item-success">Заявки на текущий день принимаем до 14:00</li>
+                <li class="list-group-item list-group-item-warning">Доставка по России от 1 дня</li>
+                <li class="list-group-item list-group-item-danger">Личный кабинет для управления услугами</li>
+            </ul>
+        </div>
+        
+        @*<h3>Заказы</h3>
+        <table>
+            <tr>
+                <td><p>Вес</p></td>
+                <td><p>Цена</p></td>
+                <td></td>
+            </tr>
+            @foreach (var b in ViewBag.Orders)
+            {
+                <tr>
+                    <td><p>@b.Weight</p></td>
+                    <td><p>@b.Price</p></td>
+                    <td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
+                </tr>
+            }
+        </table>*@
+    </div>
+</body>
+</html>

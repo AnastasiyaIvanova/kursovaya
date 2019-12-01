@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header class="myheader">
+        <ul>
+            <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+        </ul>
+        <div class="user">
+            <p>Log In</p>
+            <p>Auth</p>
+        </div>
+    </header>
+    <div class="menu">
+        <ul>
+            <li>О нас</li>
+            <li>Расчет стоимости доставки</li>
+        </ul>
+    </div>
+    @RenderBody()
+    <footer>
+        <div class="myfooter">
+            <p>НОВОСТИ</p>
+            <p>ЗАПРЕЩЕНО К ПЕРЕСЫЛКЕ</p>
+            <p>ВОПРОС-ОТВЕТ</p>
+        </div>
+    </footer>
+</body>
+</html>
