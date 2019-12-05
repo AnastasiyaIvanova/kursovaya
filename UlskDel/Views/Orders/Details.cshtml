@@ -1,0 +1,131 @@
+﻿@model UlskDel.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receiver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receiver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Sender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Sender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address_Receiver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address_Receiver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Sender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Sender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone_Receiver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone_Receiver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Width)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Who_pay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Who_pay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

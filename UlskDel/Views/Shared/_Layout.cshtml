@@ -5,6 +5,8 @@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=8eca35a4-b90a-4aea-868d-f6fc2c565864&lang=ru_RU" type="text/javascript">
+    </script>
 </head>
 
 <body>
@@ -21,6 +23,7 @@
         <ul>
             <li>@Html.ActionLink("О нас", "About", "Home")</li>
             <li>@Html.ActionLink("Расчет стоимости доставки", "Count", "Home")</li>
+            <li>@Html.ActionLink("Заказ", "Index", "Orders")</li>
         </ul>
     </div>
     @RenderBody()
@@ -33,3 +36,4 @@
     </footer>
 </body>
 </html>
+@Scripts.Render("~/scripts/script.js")

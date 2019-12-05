@@ -10,10 +10,8 @@ namespace UlskDel.Models
     {
         protected override void Seed(OrderContext db)
         {
-            db.Orders.Add(new Order { Weight = 13, Price = 220 });
-            db.Orders.Add(new Order { Weight = 22, Price = 180 });
-            db.Orders.Add(new Order { Weight = 4, Price = 150 });
-
+            db.Orders.Add(new Order { Sender="Ann", Receiver="Peter", Date=DateTime.Now, Time=DateTime.MaxValue});
+            db.Users.Add(new User { FirstName = "Moon", LastName = "Ivanova", Id = 1 });
             base.Seed(db);
         }
     }
