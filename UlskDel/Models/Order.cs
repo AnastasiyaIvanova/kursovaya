@@ -27,5 +27,6 @@ namespace UlskDel.Models
         // цена
         public int Price { get; set; }
         public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

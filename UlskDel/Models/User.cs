@@ -11,5 +11,11 @@ namespace UlskDel.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Patronymic { get; set; }
+        //public List<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        public User()
+        {
+            Orders = new List<Order>();
+        }
     }
 }
