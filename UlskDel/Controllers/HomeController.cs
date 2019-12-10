@@ -12,16 +12,25 @@ namespace UlskDel.Controllers
         // создаем контекст данных
         OrderContext db = new OrderContext();
 
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    // получаем из бд все объекты Book
+        //    IEnumerable<Order> orders = db.Orders;
+        //    // передаем все объекты в динамическое свойство Books в ViewBag
+        //    ViewBag.Orders = orders;
+        //    // возвращаем представление
+        //    return View();
+        //}
+        public string Index()
         {
-            // получаем из бд все объекты Book
-            IEnumerable<Order> orders = db.Orders;
-            // передаем все объекты в динамическое свойство Books в ViewBag
-            ViewBag.Orders = orders;
-            // возвращаем представление
-            return View();
+            string result = "Вы не авторизованы";
+            if (User.Identity.IsAuthenticated)
+            {
+                result = "Ваш логин: " + User.Identity.Name;
+            }
+            return result;
         }
-
+        [Authorize]
         public ActionResult About()
         {
             return View();
