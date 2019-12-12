@@ -10,11 +10,11 @@ namespace UlskDel.Controllers
 {
     public class AccountController : Controller
     {
+        OrderContext db = new OrderContext();
         public ActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
@@ -22,13 +22,9 @@ namespace UlskDel.Controllers
             if (ModelState.IsValid)
             {
                 // поиск пользователя в бд
-                Login login = null;
-                using (OrderContext db = new OrderContext())
-                {
-                    login = db.Logins.FirstOrDefault(u => u.Email == model.Name && u.Password == model.Password);
+                User user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == model.Password);
 
-                }
-                if (login != null)
+                if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Name, true);
                     return RedirectToAction("Index", "Home");
@@ -38,7 +34,6 @@ namespace UlskDel.Controllers
                     ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
                 }
             }
-
             return View(model);
         }
 
@@ -52,34 +47,22 @@ namespace UlskDel.Controllers
         {
             if (ModelState.IsValid)
             {
-                Login login = null;
-                using (OrderContext db = new OrderContext())
-                {
-                    login = db.Logins.FirstOrDefault(u => u.Email == model.Name);
-                }
-                if (login == null)
-                {
-                    // создаем нового пользователя
-                    using (OrderContext db = new OrderContext())
-                    {
-                        db.Logins.Add(new Login { Email = model.Name, Password = model.Password });
-                        db.SaveChanges();
+                User user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == model.Password);
 
-                        login = db.Logins.Where(u => u.Email == model.Name && u.Password == model.Password).FirstOrDefault();
-                    }
-                    // если пользователь удачно добавлен в бд
-                    if (login != null)
+                if (user == null)
+                {
+                    db.Users.Add(new User { Email = model.Name, Password = model.Password, RoleId = 2 });
+                    db.SaveChanges();
+                    user = db.Users.Where(u => u.Email == model.Name && u.Password == model.Password).FirstOrDefault();
+                    if (user != null)
                     {
                         FormsAuthentication.SetAuthCookie(model.Name, true);
                         return RedirectToAction("Index", "Home");
                     }
                 }
                 else
-                {
                     ModelState.AddModelError("", "Пользователь с таким логином уже существует");
-                }
             }
-
             return View(model);
         }
         public ActionResult Logoff()

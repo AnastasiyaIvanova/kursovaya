@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using UlskDel.Models;
 
 namespace UlskDel.Controllers
@@ -12,25 +13,27 @@ namespace UlskDel.Controllers
         // создаем контекст данных
         OrderContext db = new OrderContext();
 
-        //public ActionResult Index()
-        //{
-        //    // получаем из бд все объекты Book
-        //    IEnumerable<Order> orders = db.Orders;
-        //    // передаем все объекты в динамическое свойство Books в ViewBag
-        //    ViewBag.Orders = orders;
-        //    // возвращаем представление
-        //    return View();
-        //}
-        public string Index()
+        public ActionResult Index()
         {
-            string result = "Вы не авторизованы";
-            if (User.Identity.IsAuthenticated)
-            {
-                result = "Ваш логин: " + User.Identity.Name;
-            }
-            return result;
+            // получаем из бд все объекты Book
+            IEnumerable<Order> orders = db.Orders;
+            // передаем все объекты в динамическое свойство Books в ViewBag
+            ViewBag.Orders = orders;
+            // возвращаем представление
+            return View();
         }
-        [Authorize]
+
+        //public string Index()
+        //{
+        //    string result = "Вы не авторизованы";
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        result = "Ваш логин: " + User.Identity.Name;
+        //    }
+        //    return result;
+        //}
+
+        //[Authorize(Roles = "user")]
         public ActionResult About()
         {
             return View();

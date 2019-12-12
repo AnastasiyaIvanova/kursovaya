@@ -15,8 +15,19 @@
             <li>@Html.ActionLink("Главная", "Index", "Home")</li>
         </ul>
         <div class="user">
-            <p>Log In</p>
-            <p>Auth</p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("user"))
+                {
+                    <a href="@Url.Action("Index","Users")">@User.Identity.Name</a>
+                }
+                <p>@Html.ActionLink("Log Out", "Logoff", "Account")</p>
+            }
+            else
+            {
+                <p>@Html.ActionLink("Log In", "Login", "Account")</p>
+                <p>@Html.ActionLink("Auth", "Register", "Account")</p>
+            }
         </div>
     </header>
     <div class="menu">

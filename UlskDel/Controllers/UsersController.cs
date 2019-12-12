@@ -21,19 +21,19 @@ namespace UlskDel.Controllers
         }
 
         // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    User user = db.Users.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(user);
+        //}
 
         // GET: Users/Create
         public ActionResult Create()
