@@ -19,7 +19,9 @@
             {
                 if (User.IsInRole("user"))
                 {
-                    <a href="@Url.Action("Index","Users")">@User.Identity.Name</a>
+                    var username = User.Identity.Name;
+                    //Guid guid = Guid.Parse(Membership.GetUser(username).ProviderUserKey.ToString());
+                    <a href="@Url.Action("Details","Users", new { id=2 })">@username</a>
                 }
                 <p>@Html.ActionLink("Log Out", "Logoff", "Account")</p>
             }

@@ -17,27 +17,29 @@ namespace UlskDel.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var users = db.Users.Include(u => u.Role);
+            return View(users.ToList());
         }
 
         // GET: Users/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    User user = db.Users.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
-        //    if (user == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(user);
-        //}
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
 
         // GET: Users/Create
         public ActionResult Create()
         {
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Patronymic")] User user)
+        public ActionResult Create([Bind(Include = "Id,Email,Password,Nickname,RoleId")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace UlskDel.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name", user.RoleId);
             return View(user);
         }
 
@@ -70,6 +73,7 @@ namespace UlskDel.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name", user.RoleId);
             return View(user);
         }
 
@@ -78,7 +82,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Patronymic")] User user)
+        public ActionResult Edit([Bind(Include = "Id,Email,Password,Nickname,RoleId")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace UlskDel.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name", user.RoleId);
             return View(user);
         }
 

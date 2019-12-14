@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -21,8 +23,9 @@ namespace UlskDel.Controllers
         {
             if (ModelState.IsValid)
             {
+                string pwd = GetHash(model.Password);
                 // поиск пользователя в бд
-                User user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == model.Password);
+                User user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == pwd);
 
                 if (user != null)
                 {
@@ -47,13 +50,14 @@ namespace UlskDel.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == model.Password);
+                string pwd = GetHash(model.Password);
+                User user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == pwd);
 
                 if (user == null)
                 {
-                    db.Users.Add(new User { Email = model.Name, Password = model.Password, RoleId = 2 });
+                    db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = 2 });
                     db.SaveChanges();
-                    user = db.Users.Where(u => u.Email == model.Name && u.Password == model.Password).FirstOrDefault();
+                    user = db.Users.Where(u => u.Email == model.Name && u.Password == pwd).FirstOrDefault();
                     if (user != null)
                     {
                         FormsAuthentication.SetAuthCookie(model.Name, true);
@@ -69,6 +73,13 @@ namespace UlskDel.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+        private string GetHash(string input)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+            return Convert.ToBase64String(hash);
         }
     }
 }

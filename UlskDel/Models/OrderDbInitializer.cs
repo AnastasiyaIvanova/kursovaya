@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace UlskDel.Models
 {
-    public class OrderDbInitializer : DropCreateDatabaseIfModelChanges<OrderContext>
+    public class OrderDbInitializer : DropCreateDatabaseAlways<OrderContext>
     {
         protected override void Seed(OrderContext db)
         {
@@ -17,13 +19,22 @@ namespace UlskDel.Models
             Role user = new Role { Name = "user" };
             db.Roles.Add(admin);
             db.Roles.Add(user);
+
+            string pwd = GetHash("123456");
             db.Users.Add(new User
             {
                 Email = "somemail@gmail.com",
-                Password = "123456",
+                Password = pwd,
                 Role = admin
             });
             base.Seed(db);
+        }
+
+        private string GetHash(string input)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+            return Convert.ToBase64String(hash);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿@model UlskDel.Models.User
-@using UlskDel.Models
 
 @{
     ViewBag.Title = "Details";
@@ -13,93 +12,38 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Role.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.Role.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Patronymic)
+            @Html.DisplayNameFor(model => model.Password)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Patronymic)
+            @Html.DisplayFor(model => model.Password)
         </dd>
 
-        <dt>Заказы</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Nickname)
+        </dd>
 
     </dl>
-    <table>
-        <tr>
-            <th>Sender</th>
-            <th>Receiver</th>
-            <th>Address_Sender</th>
-            <th>Address_Receiver</th>
-            <th>Phone_Sender</th>
-            <th>Phone_Receiver</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-            <th>Weight</th>
-            <th>Length</th>
-            <th>Width</th>
-            <th>Who_pay</th>
-        </tr>
-        @foreach (Order order in Model.Orders)
-        {
-
-            <tr>
-                <td>@order.Sender</td>
-                <td>@order.Receiver</td>
-                <td>@order.Address_Sender</td>
-                <td>@order.Address_Receiver</td>
-                <td>@order.Phone_Sender</td>
-                <td>@order.Phone_Receiver</td>
-                <td>@order.Date</td>
-                <td>@order.Time</td>
-                <td>@order.Status</td>
-                <td>@order.Weight</td>
-                <td>@order.Length</td>
-                <td>@order.Width</td>
-                <td>@order.Who_pay</td>
-            </tr>
-        }
-    </table>
-    
-    @*<table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => order.Sender)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Receiver)
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Receiver)
-                    </td>
-                </tr>
-            }
-
-        </table>*@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
