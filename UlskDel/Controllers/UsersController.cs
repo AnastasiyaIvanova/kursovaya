@@ -28,7 +28,7 @@ namespace UlskDel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            User user = db.Users.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
             if (user == null)
             {
                 return HttpNotFound();

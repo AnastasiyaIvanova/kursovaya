@@ -22,6 +22,11 @@ namespace UlskDel.Models
         public string Nickname { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        public User()
+        {
+            Orders = new List<Order>();
+        }
     }
 
     public class Role

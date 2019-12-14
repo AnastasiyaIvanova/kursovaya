@@ -17,15 +17,34 @@ namespace UlskDel.Models
             //db.Orders.Add(new Order { Sender = "SDF", Receiver = "sdf", Date = DateTime.Now, Time = DateTime.MaxValue, UserId = 1 });
             Role admin = new Role { Name = "admin" };
             Role user = new Role { Name = "user" };
+            Role courier = new Role { Name = "courier" };
             db.Roles.Add(admin);
             db.Roles.Add(user);
+
+            string pwdUser = GetHash("123");
+            db.Users.Add(new User
+            {
+                Email = "user@mail.com",
+                Password = pwdUser,
+                Role = user
+            });
+            base.Seed(db);
 
             string pwd = GetHash("123456");
             db.Users.Add(new User
             {
-                Email = "somemail@gmail.com",
+                Email = "admin@mail.com",
                 Password = pwd,
                 Role = admin
+            });
+            base.Seed(db);
+
+            string pwd2 = GetHash("123456");
+            db.Users.Add(new User
+            {
+                Email = "courier@mail.com",
+                Password = pwd2,
+                Role = courier
             });
             base.Seed(db);
         }

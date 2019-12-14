@@ -55,7 +55,7 @@ namespace UlskDel.Controllers
 
                 if (user == null)
                 {
-                    db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = 2 });
+                    db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = 1 });
                     db.SaveChanges();
                     user = db.Users.Where(u => u.Email == model.Name && u.Password == pwd).FirstOrDefault();
                     if (user != null)
