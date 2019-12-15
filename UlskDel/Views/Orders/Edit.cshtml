@@ -99,7 +99,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Time, new[] {
+            @Html.DropDownListFor(model => model.Status, new[] {
             new SelectListItem() {Text = "обрабатывается", Value = "обрабатывается"},
             new SelectListItem() {Text = "отправлен", Value = "отправлен"},
             new SelectListItem() {Text = "получен", Value = "получен"}

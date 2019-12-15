@@ -83,7 +83,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Weight,Length,Width,Height,Who_pay,Price,UserId")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Status,Weight,Length,Width,Height,Who_pay,Price,UserId")] Order order)
         {
             if (ModelState.IsValid)
             {
