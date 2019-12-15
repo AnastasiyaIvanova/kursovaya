@@ -23,7 +23,7 @@
         <dt>Заказы</dt>
         @if (Model.Orders.Count == 0)
         {
-            <dd>У вас пока нет заказов</dd>
+            <dd>Пока нет заказов</dd>
         }
 
     </dl>
@@ -44,32 +44,36 @@
                 <th>Length</th>
                 <th>Width</th>
                 <th>Who_pay</th>
+                <th>Price</th>
             </tr>
 
             @foreach (Order order in Model.Orders)
             {
 
-                <tr>
-                    <td>@order.Sender</td>
-                    <td>@order.Receiver</td>
-                    <td>@order.Address_Sender</td>
-                    <td>@order.Address_Receiver</td>
-                    <td>@order.Phone_Sender</td>
-                    <td>@order.Phone_Receiver</td>
-                    <td>@order.Date</td>
-                    <td>@order.Time</td>
-                    <td>@order.Status</td>
-                    <td>@order.Weight</td>
-                    <td>@order.Length</td>
-                    <td>@order.Width</td>
-                    <td>@order.Who_pay</td>
-                </tr>
+            <tr>
+                <td>@order.Sender</td>
+                <td>@order.Receiver</td>
+                <td>@order.Address_Sender</td>
+                <td>@order.Address_Receiver</td>
+                <td>@order.Phone_Sender</td>
+                <td>@order.Phone_Receiver</td>
+                <td>@order.Date</td>
+                <td>@order.Time</td>
+                <td>@order.Status</td>
+                <td>@order.Weight</td>
+                <td>@order.Length</td>
+                <td>@order.Width</td>
+                <td>@order.Who_pay</td>
+                <td>@order.Price</td>
+            </tr>
             }
         </table>
     }
-    <div>@Html.ActionLink("Совершить заказ", "Create", "Orders")</div>
+    @if (User.IsInRole("user"))
+    {
+        <div>@Html.ActionLink("Совершить заказ", "Create", "Orders")</div>
+    }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Изменить логин или пароль","Edit", new { id = Model.Id })
 </p>

@@ -14,7 +14,7 @@ namespace UlskDel.Models
         {
             //db.Users.Add(new User { Id = 1, FirstName = "Moon", LastName = "Ivanova", Patronymic = "Petrovna" });
             //db.Orders.Add(new Order { Sender = "Ann", Receiver = "Peter", Date = DateTime.Now, Time = DateTime.MaxValue, UserId = 1 });
-            //db.Orders.Add(new Order { Sender = "SDF", Receiver = "sdf", Date = DateTime.Now, Time = DateTime.MaxValue, UserId = 1 });
+            
             Role admin = new Role { Name = "admin" };
             Role user = new Role { Name = "user" };
             Role courier = new Role { Name = "courier" };
@@ -47,6 +47,8 @@ namespace UlskDel.Models
                 Role = courier
             });
             base.Seed(db);
+
+            //db.Orders.Add(new Order { Sender = "SDF", Receiver = "sdf", Address_Receiver="Ульяновск", Address_Sender="Ярославль", Phone_Receiver = 98957, Phone_Sender = 986897, Date = DateTime.Now, Time = DateTime.MaxValue, Price = 1300, Status="Обрабатывается", Weight=13, Length=10, Width=3, Who_pay=false, UserId = 1 });
         }
 
         private string GetHash(string input)
