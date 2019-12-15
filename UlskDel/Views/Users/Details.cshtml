@@ -46,57 +46,66 @@
             <th>Height</th>
             <th>Оплата отправителем</th>
             <th>Price</th>
+            <th></th>
         </tr>
 
         @foreach (Order order in Model.Orders)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Sender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Receiver)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Address_Sender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Address_Receiver)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Phone_Sender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Phone_Receiver)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Time)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Weight)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Height)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Length)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Width)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Who_pay)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => order.Price)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => order.Sender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Receiver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Address_Sender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Address_Receiver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Phone_Sender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Phone_Receiver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Who_pay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Price)
+            </td>
+            @if (order.Print)
+            {
+                <td>@Html.ActionLink("Печать", "Print", "Orders", new { id = order.OrderId }, null)</td>
+            }
+            else
+            {
+                <td>Печать</td>
+            }
+        </tr>
         }
 
     </table>

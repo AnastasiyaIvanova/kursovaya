@@ -23,16 +23,6 @@ namespace UlskDel.Controllers
             return View();
         }
 
-        //public string Index()
-        //{
-        //    string result = "Вы не авторизованы";
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        result = "Ваш логин: " + User.Identity.Name;
-        //    }
-        //    return result;
-        //}
-
         //[Authorize(Roles = "user")]
         public ActionResult About()
         {

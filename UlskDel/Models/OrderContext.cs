@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -17,9 +18,10 @@ namespace UlskDel.Models
     public class User
     {
         public int Id { get; set; }
+        [Display(Name = "Почта")]
         public string Email { get; set; }
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
-        public string Nickname { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }
         public ICollection<Order> Orders { get; set; }
