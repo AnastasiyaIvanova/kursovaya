@@ -19,6 +19,7 @@ using iTextSharp.tool.xml.pipeline.end;
 using System.Xml.Linq;
 using iTextSharp.tool.xml.parser;
 using System.Text;
+using ExcelLibrary.SpreadSheet;
 
 namespace UlskDel.Controllers
 {
@@ -255,22 +256,57 @@ namespace UlskDel.Controllers
             DC.SetMargins(10, 10, 10, 10);
             DC.Add(new Paragraph("Подпись_________________", font));
             DC.Close();
-
-
-            //HtmlPipelineContext htmlContext = new HtmlPipelineContext(null);
-            //htmlContext.SetTagFactory(Tags.GetHtmlTagProcessorFactory());
-            //ICSSResolver cssresolver = XMLWorkerHelper.GetInstance().GetDefaultCssResolver(true);
-            //IPipeline pipeline =
-            // new CssResolverPipeline(cssresolver,
-            //  new HtmlPipeline(htmlContext, new PdfWriterPipeline(DC, writer)));
-
-            //XMLWorker worker = new XMLWorker(pipeline, true);
-            //XMLParser p = new XMLParser(true, worker, Encoding.Unicode);
-
-            //p.Parse((TextReader)System.IO.File.OpenText(@"C:\Users\user\Videos\Template.html"));
-            //DC.Close();
+            
             return RedirectToAction("Index", "LK");
             
+        }
+
+        //Сохранение отчета в xls
+        public ActionResult Save()
+        {
+            string file = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/newdoc.xls";
+            Workbook workbook = new Workbook();
+            Worksheet worksheet = new Worksheet("Отчет");
+            List<Order> orders = db.Orders.ToList();
+            worksheet.Cells[0, 0] = new Cell("Отправитель");
+            worksheet.Cells[0, 1] = new Cell("Получатель");
+            worksheet.Cells[0, 2] = new Cell("Адрес отправителя");
+            worksheet.Cells[0, 3] = new Cell("Адрес получателя");
+            worksheet.Cells[0, 4] = new Cell("Номер отправителя");
+            worksheet.Cells[0, 5] = new Cell("Номер получателя");
+            worksheet.Cells[0, 6] = new Cell("Дата");
+            worksheet.Cells[0, 7] = new Cell("Время");
+            worksheet.Cells[0, 8] = new Cell("Статус");
+            worksheet.Cells[0, 9] = new Cell("Вес");
+            worksheet.Cells[0, 10] = new Cell("Длина");
+            worksheet.Cells[0, 11] = new Cell("Ширина");
+            worksheet.Cells[0, 12] = new Cell("Высота");
+            worksheet.Cells[0, 13] = new Cell("Оплата отправителем");
+            worksheet.Cells[0, 14] = new Cell("Цена");
+            worksheet.Cells[0, 15] = new Cell("ID пользователя");
+
+            for (int i = 0; i <= orders.Count-1; i++)
+            {
+                worksheet.Cells[i+1, 0] = new Cell(orders[i].Sender);
+                worksheet.Cells[i+1, 1] = new Cell(orders[i].Receiver);
+                worksheet.Cells[i+1, 2] = new Cell(orders[i].Address_Sender);
+                worksheet.Cells[i+1, 3] = new Cell(orders[i].Address_Receiver);
+                worksheet.Cells[i+1, 4] = new Cell(orders[i].Phone_Sender);
+                worksheet.Cells[i+1, 5] = new Cell(orders[i].Phone_Receiver);
+                worksheet.Cells[i + 1, 6] = new Cell(orders[i].Date, @"YYYY-MM-DD");
+                worksheet.Cells[i + 1, 7] = new Cell(orders[i].Time, @"HH-mm");
+                worksheet.Cells[i + 1, 8] = new Cell(orders[i].Status);
+                worksheet.Cells[i + 1, 9] = new Cell((decimal)orders[i].Weight);
+                worksheet.Cells[i + 1, 10] = new Cell((decimal)orders[i].Length);
+                worksheet.Cells[i + 1, 11] = new Cell((decimal)orders[i].Width);
+                worksheet.Cells[i + 1, 12] = new Cell((decimal)orders[i].Height);
+                worksheet.Cells[i + 1, 13] = new Cell((bool)orders[i].Who_pay);
+                worksheet.Cells[i + 1, 14] = new Cell((int)orders[i].Price);
+                worksheet.Cells[i + 1, 15] = new Cell((int)orders[i].UserId);
+            }
+            workbook.Worksheets.Add(worksheet);
+            workbook.Save(file);
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
