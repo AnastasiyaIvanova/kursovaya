@@ -19,8 +19,10 @@ namespace UlskDel.Models
     {
         public int Id { get; set; }
         [Display(Name = "Почта")]
+        [MinLength(4)]
         public string Email { get; set; }
         [Display(Name = "Пароль")]
+        [MinLength(6)]
         public string Password { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }

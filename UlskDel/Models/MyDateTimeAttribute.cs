@@ -6,21 +6,12 @@ using System.Web;
 
 namespace UlskDel.Models
 {
-    public class MyDateTimeAttribute : ValidationAttribute
+    public class MyDateTimeAttribute : RangeAttribute
     {
-
-        public override bool IsValid(object value)
-        {
-            if (value != null)
-            {
-                DateTime date;
-                DateTime.TryParse(value.ToString(), out date);
-                if (date > DateTime.Now)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        public MyDateTimeAttribute()
+          : base(typeof(DateTime),
+                  DateTime.Now.AddDays(1).ToShortDateString(),
+                  DateTime.Now.AddYears(1).ToShortDateString()
+        { }
     }
 }

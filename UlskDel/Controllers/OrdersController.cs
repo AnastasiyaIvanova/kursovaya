@@ -28,9 +28,24 @@ namespace UlskDel.Controllers
         private OrderContext db = new OrderContext();
 
         // GET: Orders
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.Orders.ToList());
+            var elem = from s in db.Orders
+                       select s;
+            
+            List<SelectListItem> item = new List<SelectListItem>();
+
+            item.Add(new SelectListItem { Text = "неделя", Value = "0"});
+            item.Add(new SelectListItem { Text = "месяц", Value = "1", Selected = true});
+            DateTime week = DateTime.Now.AddDays(-7);
+            DateTime month = DateTime.Now.AddMonths(-1);
+            ViewBag.id = item;
+            switch (id)
+            {
+                case 0: elem = elem.Where(s => s.Date.CompareTo(week)>0);break;
+                case 1: elem = elem.Where(s => s.Date.CompareTo(month)>0); break;
+            }
+            return View(elem.ToList());
         }
 
         // GET: Orders/Details/5
@@ -71,7 +86,7 @@ namespace UlskDel.Controllers
                 order.Print = false;
                 db.Orders.Add(order);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","LK");
             }
 
             return View(order);
@@ -262,7 +277,7 @@ namespace UlskDel.Controllers
         }
 
         //Сохранение отчета в xls
-        public ActionResult Save()
+        public ActionResult Save(int? id)
         {
             string file = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/newdoc.xls";
             Workbook workbook = new Workbook();
