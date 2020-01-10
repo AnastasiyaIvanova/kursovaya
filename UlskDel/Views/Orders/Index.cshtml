@@ -35,11 +35,11 @@
             @Html.DisplayNameFor(model => model.Address_Receiver)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Phone_Sender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone_Receiver)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Phone_Sender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_Receiver)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
@@ -89,11 +89,11 @@
                 @Html.DisplayFor(modelItem => item.Address_Receiver)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Phone_Sender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone_Receiver)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.Phone_Sender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone_Receiver)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
@@ -135,12 +135,17 @@
 </table>
 
 <div>
-    @using (Html.BeginForm("Save", "Orders", FormMethod.Post))
+    @{
+        TempData["FullModel"] = Model.ToList();
+    }
+    @using (Html.BeginForm("save", "orders", new { order = Model }, FormMethod.Post))
     {
+
         <p>
-            <input type="submit" value="Сохранить отчет" style="text-align: center" />
+            <input type="submit" value="сохранить отчет" style="text-align: center" />
         </p>
     }
-    @ViewBag.Error
+    @ViewBag.error
 </div>
-@*<div>@Html.ActionLink("Сохранить отчет", "Save")</div>*@
+
+@*<div>@Html.ActionLink("Сохранить отчет", "Save", new { order = Model.ToList() }, null)</div>*@

@@ -26,7 +26,7 @@ namespace UlskDel.Controllers
     public class OrdersController : Controller
     {
         private OrderContext db = new OrderContext();
-
+        
         // GET: Orders
         public ActionResult Index(int? id)
         {
@@ -36,14 +36,19 @@ namespace UlskDel.Controllers
             List<SelectListItem> item = new List<SelectListItem>();
 
             item.Add(new SelectListItem { Text = "неделя", Value = "0"});
-            item.Add(new SelectListItem { Text = "месяц", Value = "1", Selected = true});
+            item.Add(new SelectListItem { Text = "месяц", Value = "1"});
+            item.Add(new SelectListItem { Text = "все", Value = "2", Selected = true});
             DateTime week = DateTime.Now.AddDays(-7);
             DateTime month = DateTime.Now.AddMonths(-1);
+            DateTime now = DateTime.Now;
             ViewBag.id = item;
             switch (id)
             {
-                case 0: elem = elem.Where(s => s.Date.CompareTo(week)>0);break;
-                case 1: elem = elem.Where(s => s.Date.CompareTo(month)>0); break;
+                case 0: elem = elem.Where(s => s.Date.CompareTo(week)>0 
+                                            && s.Date.CompareTo(now)<0);break;
+                case 1: elem = elem.Where(s => s.Date.CompareTo(month)>0
+                                            && s.Date.CompareTo(now) < 0); break;
+                case 2: elem = db.Orders;break;
             }
             return View(elem.ToList());
         }
@@ -277,12 +282,14 @@ namespace UlskDel.Controllers
         }
 
         //Сохранение отчета в xls
-        public ActionResult Save(int? id)
+        [HttpPost]
+        public ActionResult Save(List<Order> order )
         {
+            List<Order> model = (List<Order>)TempData["FullModel"];
             string file = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/newdoc.xls";
             Workbook workbook = new Workbook();
             Worksheet worksheet = new Worksheet("Отчет");
-            List<Order> orders = db.Orders.ToList();
+            //List<Order> model = db.Orders.ToList();
             worksheet.Cells[0, 0] = new Cell("Отправитель");
             worksheet.Cells[0, 1] = new Cell("Получатель");
             worksheet.Cells[0, 2] = new Cell("Адрес отправителя");
@@ -300,24 +307,24 @@ namespace UlskDel.Controllers
             worksheet.Cells[0, 14] = new Cell("Цена");
             worksheet.Cells[0, 15] = new Cell("ID пользователя");
 
-            for (int i = 0; i <= orders.Count-1; i++)
+            for (int i = 0; i <= model.Count-1; i++)
             {
-                worksheet.Cells[i+1, 0] = new Cell(orders[i].Sender);
-                worksheet.Cells[i+1, 1] = new Cell(orders[i].Receiver);
-                worksheet.Cells[i+1, 2] = new Cell(orders[i].Address_Sender);
-                worksheet.Cells[i+1, 3] = new Cell(orders[i].Address_Receiver);
-                worksheet.Cells[i+1, 4] = new Cell(orders[i].Phone_Sender);
-                worksheet.Cells[i+1, 5] = new Cell(orders[i].Phone_Receiver);
-                worksheet.Cells[i + 1, 6] = new Cell(orders[i].Date, @"YYYY-MM-DD");
-                worksheet.Cells[i + 1, 7] = new Cell(orders[i].Time, @"HH-mm");
-                worksheet.Cells[i + 1, 8] = new Cell(orders[i].Status);
-                worksheet.Cells[i + 1, 9] = new Cell((decimal)orders[i].Weight);
-                worksheet.Cells[i + 1, 10] = new Cell((decimal)orders[i].Length);
-                worksheet.Cells[i + 1, 11] = new Cell((decimal)orders[i].Width);
-                worksheet.Cells[i + 1, 12] = new Cell((decimal)orders[i].Height);
-                worksheet.Cells[i + 1, 13] = new Cell((bool)orders[i].Who_pay);
-                worksheet.Cells[i + 1, 14] = new Cell((int)orders[i].Price);
-                worksheet.Cells[i + 1, 15] = new Cell((int)orders[i].UserId);
+                worksheet.Cells[i+1, 0] = new Cell(model[i].Sender);
+                worksheet.Cells[i+1, 1] = new Cell(model[i].Receiver);
+                worksheet.Cells[i+1, 2] = new Cell(model[i].Address_Sender);
+                worksheet.Cells[i+1, 3] = new Cell(model[i].Address_Receiver);
+                worksheet.Cells[i+1, 4] = new Cell(model[i].Phone_Sender);
+                worksheet.Cells[i+1, 5] = new Cell(model[i].Phone_Receiver);
+                worksheet.Cells[i + 1, 6] = new Cell(model[i].Date, @"YYYY-MM-DD");
+                worksheet.Cells[i + 1, 7] = new Cell(model[i].Time, @"HH-mm");
+                worksheet.Cells[i + 1, 8] = new Cell(model[i].Status);
+                worksheet.Cells[i + 1, 9] = new Cell((decimal)model[i].Weight);
+                worksheet.Cells[i + 1, 10] = new Cell((decimal)model[i].Length);
+                worksheet.Cells[i + 1, 11] = new Cell((decimal)model[i].Width);
+                worksheet.Cells[i + 1, 12] = new Cell((decimal)model[i].Height);
+                worksheet.Cells[i + 1, 13] = new Cell((bool)model[i].Who_pay);
+                worksheet.Cells[i + 1, 14] = new Cell((int)model[i].Price);
+                worksheet.Cells[i + 1, 15] = new Cell((int)model[i].UserId);
             }
             workbook.Worksheets.Add(worksheet);
             workbook.Save(file);

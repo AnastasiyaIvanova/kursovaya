@@ -11,7 +11,7 @@ namespace UlskDel.Models
         public MyDateTimeAttribute()
           : base(typeof(DateTime),
                   DateTime.Now.AddDays(1).ToShortDateString(),
-                  DateTime.Now.AddYears(1).ToShortDateString()
+                  DateTime.Now.AddYears(1).ToShortDateString())
         { }
     }
 }
