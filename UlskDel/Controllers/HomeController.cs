@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using UlskDel.Models;
+using Jint;
 
 namespace UlskDel.Controllers
 {
@@ -28,17 +29,20 @@ namespace UlskDel.Controllers
         {
             return View();
         }
-
+        
+        
         public ActionResult Count()
         {
             return View();
         }
 
-        //[HttpPost]
-        //public string Count(Order order)
-        //{
-        //    return "this " + order.Address; 
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public string Count([Bind(Include = "Address_Sender,Address_Receiver,Weight,Length,Width,Height")] Order order)
+        {
+            string receiver = order.Address_Receiver;
+            return receiver;
+        }
 
         //[HttpGet]
         //public ActionResult Buy(int id)

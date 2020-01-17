@@ -86,7 +86,7 @@ namespace UlskDel.Controllers
                 User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
                 int id = user.Id;
                 order.UserId = id;
-                order.Status = "Обрабатывается";
+                order.Status = "обрабатывается";
                 order.Price = 0;
                 order.Print = false;
                 db.Orders.Add(order);
@@ -316,7 +316,7 @@ namespace UlskDel.Controllers
                 worksheet.Cells[i+1, 4] = new Cell(model[i].Phone_Sender);
                 worksheet.Cells[i+1, 5] = new Cell(model[i].Phone_Receiver);
                 worksheet.Cells[i + 1, 6] = new Cell(model[i].Date, @"YYYY-MM-DD");
-                worksheet.Cells[i + 1, 7] = new Cell(model[i].Time, @"HH-mm");
+                worksheet.Cells[i + 1, 7] = new Cell(model[i].Time, @"hh:mm");
                 worksheet.Cells[i + 1, 8] = new Cell(model[i].Status);
                 worksheet.Cells[i + 1, 9] = new Cell((decimal)model[i].Weight);
                 worksheet.Cells[i + 1, 10] = new Cell((decimal)model[i].Length);

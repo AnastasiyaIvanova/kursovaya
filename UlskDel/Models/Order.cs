@@ -37,15 +37,19 @@ namespace UlskDel.Models
         public string Status { get; set; }
         [Display(Name = "Вес, кг")]
         [Range(0,100)]
+        [Required]
         public float Weight { get; set; }
         [Display(Name = "Длина, см")]
         [Range(0,200)]
+        [Required]
         public float Length { get; set; }
         [Display(Name = "Ширина, см")]
         [Range(0, 200)]
+        [Required]
         public float Width { get; set; }
         [Display(Name = "Высота, см")]
         [Range(0, 200)]
+        [Required]
         public float Height { get; set; }
         [Display(Name = "Оплата отправителем")]
         public bool Who_pay { get; set; }
