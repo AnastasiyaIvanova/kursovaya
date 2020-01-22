@@ -11,12 +11,15 @@ function init() {
 
     // При клике по кнопке запускаем верификацию введёных данных.
     $('#suggest').on('change', function (e) {
-        geocode();
+        geocode('#suggest', '#notice');
+    });
+    $('#suggest2').on('change', function (e) {
+        geocode('#suggest2', '#notice2');
     });
 
-    function geocode() {
+    function geocode(item, notice) {
         // Забираем запрос из поля ввода.
-        var request = $('#suggest').val();
+        var request = $(item).val();
         // Геокодируем введённые данные.
         ymaps.geocode(request).then(function (res) {
             var obj = res.geoObjects.get(0),
@@ -49,20 +52,20 @@ function init() {
 
             // Если геокодер возвращает пустой массив или неточный результат, то показываем ошибку.
             if (error) {
-                showError(error);
-                showMessage(hint);
+                showError(error, item, notice);
+                //showMessage(hint);
             } else {
-                showResult(obj);
+                showResult(obj, item, notice);
             }
         }, function (e) {
             console.log(e)
         })
 
     }
-    function showResult(obj) {
+    function showResult(obj, item, notice) {
         // Удаляем сообщение об ошибке, если найденный адрес совпадает с поисковым запросом.
-        $('#suggest').removeClass('input_error');
-        $('#notice').css('display', 'none');
+        $(item).removeClass('input_error');
+        $(notice).css('display', 'none');
 
         var mapContainer = $('#map'),
             bounds = obj.properties.get('boundedBy'),
@@ -80,13 +83,13 @@ function init() {
         // Создаём карту.
         createMap(mapState, shortAddress);
         // Выводим сообщение под картой.
-        showMessage(address);
+        //showMessage(address);
     }
 
-    function showError(message) {
-        $('#notice').text(message);
-        $('#suggest').addClass('input_error');
-        $('#notice').css('display', 'block');
+    function showError(message, item, notice) {
+        $(notice).text(message);
+        $(item).addClass('input_error');
+        $(notice).css('display', 'block');
         // Удаляем карту.
         if (map) {
             map.destroy();
@@ -144,10 +147,12 @@ function onClick() {
                 price = v;
             }
             price = Math.round(price * x);//цена
+            $('#price').val(price);
             //elPrice.value = "1300";
             //document.cookie = "price=" + price.toString() + "; domain = http://localhost:35545/Home/Count";
+            price = "Расчетная стоимость " + price + "P";
+            $('#message').text(price);
             
-            alert(price);
             map.geoObjects.add(route); //Рисуем маршрут на карте
         },
         function (error) {

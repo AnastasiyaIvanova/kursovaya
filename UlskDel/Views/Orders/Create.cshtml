@@ -5,14 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Подача заявки</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Order</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -37,6 +36,7 @@
             @Html.EditorFor(model => model.Address_Sender, new { htmlAttributes = new { @class = "form-control", @id = "suggest" } })
             @Html.ValidationMessageFor(model => model.Address_Sender, "", new { @class = "text-danger" })
         </div>
+        <p id="notice">Адрес не найден</p>
     </div>
 
     <div class="form-group">
@@ -45,6 +45,7 @@
             @Html.EditorFor(model => model.Address_Receiver, new { htmlAttributes = new { @class = "form-control", @id = "suggest2" } })
             @Html.ValidationMessageFor(model => model.Address_Receiver, "", new { @class = "text-danger" })
         </div>
+        <p id="notice2">Адрес не найден</p>
     </div>
 
     <div class="form-group">
@@ -132,6 +133,12 @@
                 @Html.ValidationMessageFor(model => model.Who_pay, "", new { @class = "text-danger" })
             </div>
         </div>
+    </div>
+
+    <div id="map"></div>
+    <div id="footer">
+        <div id="messageHeader"></div>
+        <div id="message"></div>
     </div>
 
     <div class="form-group">

@@ -15,6 +15,7 @@ namespace UlskDel.Models
 
         [Required]
         [DataType(DataType.Password)]
+        [MinLength(3)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
     }
@@ -28,11 +29,13 @@ namespace UlskDel.Models
 
         [Required]
         [DataType(DataType.Password)]
+        [MinLength(3)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
+        [MinLength(3)]
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         [Display(Name = "Подтверждение пароля")]
         public string ConfirmPassword { get; set; }
