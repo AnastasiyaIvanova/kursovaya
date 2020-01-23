@@ -43,22 +43,5 @@ namespace UlskDel.Controllers
             string receiver = order.Address_Receiver;
             return receiver;
         }
-
-        //[HttpGet]
-        //public ActionResult Buy(int id)
-        //{
-        //    ViewBag.OrderId = id;
-        //    return View();
-        //}
-        //[HttpPost]
-        //public string Buy(User user)
-        //{
-        //    user.Date = DateTime.Now;
-        //    // добавляем информацию о покупке в базу данных
-        //    db.Users.Add(user);
-        //    // сохраняем в бд все изменения
-        //    db.SaveChanges();
-        //    return "Спасибо," + user.Person + ", за покупку!";
-        //}
     }
 }

@@ -34,7 +34,7 @@ namespace UlskDel.Controllers
                        select s;
             
             List<SelectListItem> item = new List<SelectListItem>();
-
+            //фильтрация по периоду
             item.Add(new SelectListItem { Text = "неделя", Value = "0"});
             item.Add(new SelectListItem { Text = "месяц", Value = "1"});
             item.Add(new SelectListItem { Text = "все", Value = "2", Selected = true});
@@ -158,6 +158,7 @@ namespace UlskDel.Controllers
             return RedirectToAction("Index");
         }
 
+        //печать в pdf 
         public ActionResult Print(int? id)
         {
             if (id == null)

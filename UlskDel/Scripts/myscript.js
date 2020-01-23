@@ -148,8 +148,6 @@ function onClick() {
             }
             price = Math.round(price * x);//цена
             $('#price').val(price);
-            //elPrice.value = "1300";
-            //document.cookie = "price=" + price.toString() + "; domain = http://localhost:35545/Home/Count";
             price = "Расчетная стоимость " + price + "P";
             $('#message').text(price);
             
