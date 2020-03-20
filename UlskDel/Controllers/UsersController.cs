@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using UlskDel.Models;
 
 namespace UlskDel.Controllers
@@ -88,7 +89,20 @@ namespace UlskDel.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                // Обновление Логина в куках (by User.Identity.Name)
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+                    user.Email,
+                    DateTime.Now,
+                    DateTime.Now.AddMinutes(30),
+                    false,
+                    "someData",
+                    FormsAuthentication.FormsCookiePath);
+                // encrypt the ticket
+                string encTicket = FormsAuthentication.Encrypt(ticket);
+                // create the cookie
+                Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+
+                return View(user);
             }
             ViewBag.RoleId = new SelectList(db.Roles, "Id", "Name", user.RoleId);
             return View(user);

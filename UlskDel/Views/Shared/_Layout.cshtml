@@ -12,9 +12,22 @@
 
 <body>
     <header class="myheader">
-        <ul>
-            <li>@Html.ActionLink("Главная", "Index", "Home")</li>
-        </ul>
+        <img class="logo" src="~/Content/logo.jpg">
+        <div class="menu">
+            <ul>
+                <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                <li>@Html.ActionLink("О нас", "About", "Home")</li>
+                <li>@Html.ActionLink("Расчет стоимости доставки", "Count", "Home")</li>
+                @if (User.IsInRole("courier"))
+                {
+                    <li>@Html.ActionLink("Заказы", "Index", "Orders")</li>
+                }
+                @if (User.IsInRole("admin"))
+                {
+                    <li>@Html.ActionLink("Юзеры", "Index", "Users")</li>
+                }
+            </ul>
+        </div>
         <div class="user">
             @if (User.Identity.IsAuthenticated)
             {
@@ -31,20 +44,7 @@
             }
         </div>
     </header>
-    <div class="menu">
-        <ul>
-            <li>@Html.ActionLink("О нас", "About", "Home")</li>
-            <li>@Html.ActionLink("Расчет стоимости доставки", "Count", "Home")</li>
-            @if (User.IsInRole("courier"))
-            {
-                <li>@Html.ActionLink("Заказы", "Index", "Orders")</li>
-            }
-            @if (User.IsInRole("admin"))
-            {
-                <li>@Html.ActionLink("Юзеры", "Index", "Users")</li>
-            }
-        </ul>
-    </div>
+    
     <div class="wrapper">
         @RenderBody()
     </div>

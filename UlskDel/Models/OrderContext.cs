@@ -22,7 +22,7 @@ namespace UlskDel.Models
         [MinLength(4)]
         public string Email { get; set; }
         [Display(Name = "Пароль")]
-        [MinLength(6)]
+        [MinLength(3)]
         public string Password { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }

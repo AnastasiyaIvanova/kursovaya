@@ -9,7 +9,6 @@ td, th {
     display: flex;
     justify-content: space-between;
     font-size: 20px;
-    padding: 20px 50px;
 }
 
 .myheader ul {
@@ -21,12 +20,17 @@ td, th {
     }
 
 
-.myheader .user {
-    display: flex;
-}
+    .myheader .user {
+        display: flex;
+        margin: auto;
+    }
 
 .myheader .user p:last-child {
     margin-left: 20px;
+}
+
+.menu {
+    margin: auto;
 }
 
 .menu ul {
@@ -104,4 +108,10 @@ td, th {
 
 #notice, #notice2 {
     margin-left: 35px;
+}
+
+.logo {
+    width: auto;
+    height: 100px;
+    margin: 10px 20px;
 }
