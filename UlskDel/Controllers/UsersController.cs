@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -87,9 +89,12 @@ namespace UlskDel.Controllers
         {
             if (ModelState.IsValid)
             {
+                string pwd = GetHash(user.Password);
                 db.Entry(user).State = EntityState.Modified;
+                user.Password = pwd;
                 db.SaveChanges();
                 // Обновление Логина в куках (by User.Identity.Name)
+                //при изменении логина
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
                     user.Email,
                     DateTime.Now,
@@ -141,6 +146,13 @@ namespace UlskDel.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private string GetHash(string input)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+            return Convert.ToBase64String(hash);
         }
     }
 }

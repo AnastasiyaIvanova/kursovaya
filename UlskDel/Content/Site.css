@@ -98,9 +98,9 @@ td, th {
         padding-left: 43%;
     }
 
-/*.wrapper {
-    /*padding: 10px 20px;
-}*/
+.wrapper .table-wrapper {
+    margin: 0 20px;
+}
 
 .wrapper .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 3px;

@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="table-wrapper">
 <h2>Заказы</h2>
 @*<div>
     @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
@@ -49,7 +50,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Weight)
         </th>
         <th>
@@ -69,7 +70,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -103,7 +104,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Weight)
             </td>
             <td>
@@ -123,7 +124,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserId)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
@@ -146,6 +147,7 @@
         </p>
     }
     @ViewBag.error
+</div>
 </div>
 
 @*<div>@Html.ActionLink("Сохранить отчет", "Save", new { order = Model.ToList() }, null)</div>*@
