@@ -104,6 +104,19 @@ td, th {
 
 .wrapper .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 3px;
+    width: 145px;
+}
+
+.wrapper .table > tbody > tr > td {
+    max-width: 0;
+    overflow: hidden;
+    outline: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.wrapper .table > tbody > tr > td:hover {
+    white-space: unset;
 }
 
 #notice, #notice2 {

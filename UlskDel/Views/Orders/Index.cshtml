@@ -7,16 +7,26 @@
 
 <div class="table-wrapper">
 <h2>Заказы</h2>
-@*<div>
+<div>
     @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
     {
         <p>
             Фильтрация: @Html.DropDownList("id")
+            Без цены: @Html.CheckBox("searchString")
             <input type="submit" value="Фильтровать" style="text-align: center" />
         </p>
     }
     @ViewBag.Error
-</div>*@
+
+    @*@using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+    {
+        <p>
+            Без цены: @Html.CheckBox("SerchString", false)
+            <input type="submit" value="Вывести" style="text-align: center" />
+        </p>
+    }*@
+
+</div>
 
 @*<p>
         @Html.ActionLink("Create New", "Create")

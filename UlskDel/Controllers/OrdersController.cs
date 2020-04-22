@@ -28,7 +28,7 @@ namespace UlskDel.Controllers
         private OrderContext db = new OrderContext();
         
         // GET: Orders
-        public ActionResult Index(int? id)
+        public ActionResult Index(bool searchString = false, int id = 2)
         {
             var elem = from s in db.Orders
                        select s;
@@ -50,6 +50,13 @@ namespace UlskDel.Controllers
                                             && s.Date.CompareTo(now) < 0); break;
                 case 2: elem = db.Orders;break;
             }
+
+            if (searchString)
+            {                //фильтрация: цена доставки не указана
+                elem = elem.Where(s => s.Price == 0);
+
+            }
+
             return View(elem.ToList());
         }
 
