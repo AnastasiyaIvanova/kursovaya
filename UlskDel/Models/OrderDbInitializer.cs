@@ -48,6 +48,15 @@ namespace UlskDel.Models
             });
             base.Seed(db);
 
+            string pwd3 = GetHash("123456");
+            db.Users.Add(new User
+            {
+                Email = "courier2@mail.com",
+                Password = pwd3,
+                Role = courier
+            });
+            base.Seed(db);
+
             //db.Orders.Add(new Order { Sender = "SDF", Receiver = "sdf", Address_Receiver="Ульяновск", Address_Sender="Ярославль", Phone_Receiver = 98957, Phone_Sender = 986897, Date = DateTime.Now, Time = DateTime.MaxValue, Price = 1300, Status="Обрабатывается", Weight=13, Length=10, Width=3, Who_pay=false, UserId = 1 });
         }
 
