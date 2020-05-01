@@ -8,8 +8,7 @@ using System.Web;
 
 namespace UlskDel.Models
 {
-    public class OrderDbInitializer : DropCreateDatabaseAlways<OrderContext>
-    //DropCreateDatabaseIfModelChanges<OrderContext>
+    public class OrderDbInitializer : DropCreateDatabaseIfModelChanges<OrderContext>
 
     {
         protected override void Seed(OrderContext db)

@@ -16,7 +16,7 @@ namespace UlskDel.Controllers
         {
             User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
             int id = user.Id;
-            return RedirectToAction("Details", "Users", new { id });
+            return RedirectToAction("Details", "Customers", new { id });
         }
     }
 }
