@@ -31,12 +31,13 @@ namespace UlskDel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            //User user = db.Users.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
+            //if (user == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(user);
+            return View();
         }
 
         // GET: Users/Create

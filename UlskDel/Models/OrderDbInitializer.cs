@@ -8,30 +8,37 @@ using System.Web;
 
 namespace UlskDel.Models
 {
-    public class OrderDbInitializer : DropCreateDatabaseIfModelChanges<OrderContext>
+    public class OrderDbInitializer : DropCreateDatabaseAlways<OrderContext>
+    //DropCreateDatabaseIfModelChanges<OrderContext>
+
     {
         protected override void Seed(OrderContext db)
         {
-            //db.Users.Add(new User { Id = 1, FirstName = "Moon", LastName = "Ivanova", Patronymic = "Petrovna" });
-            //db.Orders.Add(new Order { Sender = "Ann", Receiver = "Peter", Date = DateTime.Now, Time = DateTime.MaxValue, UserId = 1 });
-            
             Role admin = new Role { Name = "admin" };
-            Role user = new Role { Name = "user" };
+            Role customer = new Role { Name = "customer" };
             Role courier = new Role { Name = "courier" };
             db.Roles.Add(admin);
-            db.Roles.Add(user);
+            db.Roles.Add(customer);
+            db.Roles.Add(courier);
 
             string pwdUser = GetHash("123");
-            db.Users.Add(new User
+            User first = db.Users.Add(new User
             {
                 Email = "user@mail.com",
                 Password = pwdUser,
-                Role = user
+                Role = customer
             });
             base.Seed(db);
 
+            //db.Customers.Add(new Customer
+            //{
+            //    Id = first.Id,
+            //    rating = 0
+            //});
+            //base.Seed(db);
+
             string pwd = GetHash("123456");
-            db.Users.Add(new User
+            User second = db.Users.Add(new User
             {
                 Email = "admin@mail.com",
                 Password = pwd,
@@ -39,8 +46,14 @@ namespace UlskDel.Models
             });
             base.Seed(db);
 
+            //db.Admins.Add(new Admin
+            //{
+            //    Id = second.Id
+            //});
+            //base.Seed(db);
+
             string pwd2 = GetHash("123456");
-            db.Users.Add(new User
+            User third = db.Users.Add(new User
             {
                 Email = "courier@mail.com",
                 Password = pwd2,
@@ -48,16 +61,12 @@ namespace UlskDel.Models
             });
             base.Seed(db);
 
-            string pwd3 = GetHash("123456");
-            db.Users.Add(new User
-            {
-                Email = "courier2@mail.com",
-                Password = pwd3,
-                Role = courier
-            });
-            base.Seed(db);
-
-            //db.Orders.Add(new Order { Sender = "SDF", Receiver = "sdf", Address_Receiver="Ульяновск", Address_Sender="Ярославль", Phone_Receiver = 98957, Phone_Sender = 986897, Date = DateTime.Now, Time = DateTime.MaxValue, Price = 1300, Status="Обрабатывается", Weight=13, Length=10, Width=3, Who_pay=false, UserId = 1 });
+            //db.Couriers.Add(new Courier
+            //{
+            //    Id = third.Id,
+            //    rating = 0
+            //});
+            //base.Seed(db);
         }
 
         private string GetHash(string input)

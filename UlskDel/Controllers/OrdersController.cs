@@ -92,7 +92,7 @@ namespace UlskDel.Controllers
             {
                 User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
                 int id = user.Id;
-                order.UserId = id;
+                order.CustomerId = id;
                 order.Status = "обрабатывается";
                 order.Price = 0;
                 order.Print = false;
@@ -332,7 +332,7 @@ namespace UlskDel.Controllers
                 worksheet.Cells[i + 1, 12] = new Cell((decimal)model[i].Height);
                 worksheet.Cells[i + 1, 13] = new Cell((bool)model[i].Who_pay);
                 worksheet.Cells[i + 1, 14] = new Cell((int)model[i].Price);
-                worksheet.Cells[i + 1, 15] = new Cell((int)model[i].UserId);
+                worksheet.Cells[i + 1, 15] = new Cell((int)model[i].CustomerId);
             }
             workbook.Worksheets.Add(worksheet);
             workbook.Save(file);
