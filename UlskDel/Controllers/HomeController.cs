@@ -16,11 +16,16 @@ namespace UlskDel.Controllers
 
         public ActionResult Index()
         {
-            // получаем из бд все объекты Book
             IEnumerable<Order> orders = db.Orders;
-            // передаем все объекты в динамическое свойство Books в ViewBag
+            // передаем все объекты в динамическое свойство Orders в ViewBag
             ViewBag.Orders = orders;
-            // возвращаем представление
+            //IEnumerable<User> users = db.Users.Where(x => x.Role.Name == "customer").ToArray<User>();
+            //foreach (User user in users)
+            //{
+            //    Customer customer = new Customer { Id = user.Id, rating = 0 };
+            //    db.Customers.Add(customer);
+            //}
+            db.SaveChanges();
             return View();
         }
 
@@ -34,14 +39,6 @@ namespace UlskDel.Controllers
         public ActionResult Count()
         {
             return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public string Count([Bind(Include = "Address_Sender,Address_Receiver,Weight,Length,Width,Height")] Order order)
-        {
-            string receiver = order.Address_Receiver;
-            return receiver;
         }
     }
 }
