@@ -19,13 +19,6 @@ namespace UlskDel.Controllers
             IEnumerable<Order> orders = db.Orders;
             // передаем все объекты в динамическое свойство Orders в ViewBag
             ViewBag.Orders = orders;
-            //IEnumerable<User> users = db.Users.Where(x => x.Role.Name == "customer").ToArray<User>();
-            //foreach (User user in users)
-            //{
-            //    Customer customer = new Customer { Id = user.Id, rating = 0 };
-            //    db.Customers.Add(customer);
-            //}
-            db.SaveChanges();
             return View();
         }
 

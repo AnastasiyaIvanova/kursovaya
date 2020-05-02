@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UlskDel.Models
 {
@@ -32,11 +33,6 @@ namespace UlskDel.Models
         public string Password { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }
-        //public ICollection<Order> Orders { get; set; }
-        //public User()
-        //{
-        //    Orders = new List<Order>();
-        //}
     }
 
     public class Role
@@ -74,8 +70,8 @@ namespace UlskDel.Models
         public int Id { get; set; }
         public User User { get; set; }
         public int rating { get; set; }
-        public int CarId { get; set; }
-        public Car Car { get; set; }
+        [Required]
+        [Remote("IsExist", "Courier", ErrorMessage = "URL exist!")]        
         public ICollection<Order> Orders { get; set; }
         public Courier()
         {
@@ -85,8 +81,11 @@ namespace UlskDel.Models
 
     public class Car
     {
+        [Key]
+        [ForeignKey("Courier")]
         public int Id { get; set; }
-        public int volume { get; set; }
+        public float volume { get; set; }
+        public Courier Courier { get; set; }
     }
 
 }

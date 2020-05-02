@@ -56,8 +56,6 @@ namespace UlskDel.Models
         [Display(Name = "Цена")]
         public int Price { get; set; }
         public bool Print { get; set; }
-        //public int UserId { get; set; }
-        //public User User { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public int CourierId { get; set; }

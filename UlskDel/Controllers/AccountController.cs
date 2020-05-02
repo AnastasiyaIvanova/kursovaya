@@ -46,17 +46,25 @@ namespace UlskDel.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterModel model, bool isCourier = false)
         {
             if (ModelState.IsValid)
             {
                 string pwd = GetHash(model.Password);
                 User user = db.Users.FirstOrDefault(u => u.Email == model.Name && u.Password == pwd);
+                int role = 1;
+                if (isCourier)
+                {
+                    role = 3;
+                }
 
                 if (user == null)
                 {
-                    User x = db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = 1 });
-                    db.Customers.Add(new Customer { Id = x.Id, rating = 0 });
+                    User x = db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = role });
+                    if (isCourier)
+                    {
+                        db.Couriers.Add(new Courier { Id = x.Id, rating = 0 });
+                    } else db.Customers.Add(new Customer { Id = x.Id, rating = 0 });
                     db.SaveChanges();
                     user = db.Users.Where(u => u.Email == model.Name && u.Password == pwd).FirstOrDefault();
                     if (user != null)

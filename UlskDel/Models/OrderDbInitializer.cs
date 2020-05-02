@@ -8,7 +8,8 @@ using System.Web;
 
 namespace UlskDel.Models
 {
-    public class OrderDbInitializer : DropCreateDatabaseIfModelChanges<OrderContext>
+    public class OrderDbInitializer : DropCreateDatabaseAlways<OrderContext>
+        //DropCreateDatabaseIfModelChanges<OrderContext>
 
     {
         protected override void Seed(OrderContext db)
@@ -28,6 +29,10 @@ namespace UlskDel.Models
                 Role = customer
             });
             base.Seed(db);
+            db.SaveChanges();
+
+            Customer cust = new Customer { Id = first.Id, rating = 0 };
+            db.Customers.Add(cust);
 
             //db.Customers.Add(new Customer
             //{
@@ -45,14 +50,8 @@ namespace UlskDel.Models
             });
             base.Seed(db);
 
-            //db.Admins.Add(new Admin
-            //{
-            //    Id = second.Id
-            //});
-            //base.Seed(db);
-
             string pwd2 = GetHash("123456");
-            User third = db.Users.Add(new User
+            User cour1 = db.Users.Add(new User
             {
                 Email = "courier@mail.com",
                 Password = pwd2,
@@ -60,12 +59,35 @@ namespace UlskDel.Models
             });
             base.Seed(db);
 
-            //db.Couriers.Add(new Courier
-            //{
-            //    Id = third.Id,
-            //    rating = 0
-            //});
-            //base.Seed(db);
+            User cour2 = db.Users.Add(new User
+            {
+                Email = "courier2@mail.com",
+                Password = pwd2,
+                Role = courier
+            });
+            db.SaveChanges();
+
+            var cour = new List<Courier>
+            {
+                new Courier {Id = cour1.Id, rating = 0 },
+                new Courier {Id = cour2.Id, rating = 0 }
+            };
+            cour.ForEach(s => db.Couriers.Add(s));
+            db.SaveChanges();
+
+            var car = new List<Car>
+            {
+                new Car { volume = 1.5f, Id = cour[0].Id},
+                new Car { volume = 7.5f, Id = cour[1].Id }
+                
+                //new Car { volume = 9, },
+                //new Car { volume = 15, },
+                //new Car { volume = 19.5f, }
+            };
+            car.ForEach(s => db.Cars.Add(s));
+            db.SaveChanges();
+
+            
         }
 
         private string GetHash(string input)
