@@ -47,7 +47,24 @@ namespace UlskDel.Models
         [ForeignKey("User")]
         public int Id { get; set; }
         public User User { get; set; }
-        public int rating { get; set; }
+        public int sumVotes { get; set; }
+        public int totalVotes { get; set; }
+        public double rating
+        {
+            get
+            {
+                 int[] votesRange = { 1, 2, 3, 4, 5 };
+                 if (sumVotes > 0 && totalVotes > 0) {
+                        float z = 1.64485f;
+                        int vMin = votesRange.Min();
+                        float vWidth = votesRange.Max() - vMin;
+                        float phat = (sumVotes - totalVotes * vMin) / vWidth / totalVotes;
+                        double rating = (phat + z * z / (2 * totalVotes) - z* Math.Sqrt((phat* (1 - phat) + z * z / (4 * totalVotes)) / totalVotes)) / (1 + z * z / totalVotes);
+                        return Math.Round(rating * vWidth + vMin, 6);
+                    }
+                 return 0;
+            }
+        }
         public ICollection<Order> Orders { get; set; }
         public Customer()
         {
@@ -69,7 +86,25 @@ namespace UlskDel.Models
         [ForeignKey("User")]
         public int Id { get; set; }
         public User User { get; set; }
-        public int rating { get; set; }
+        public int sumVotes { get; set; }
+        public int totalVotes { get; set; }
+        public double rating
+        {
+            get
+            {
+                int[] votesRange = { 1, 2, 3, 4, 5 };
+                if (sumVotes > 0 && totalVotes > 0)
+                {
+                    float z = 1.64485f;
+                    int vMin = votesRange.Min();
+                    float vWidth = votesRange.Max() - vMin;
+                    float phat = (sumVotes - totalVotes * vMin) / vWidth / totalVotes;
+                    double rating = (phat + z * z / (2 * totalVotes) - z * Math.Sqrt((phat * (1 - phat) + z * z / (4 * totalVotes)) / totalVotes)) / (1 + z * z / totalVotes);
+                    return Math.Round(rating * vWidth + vMin, 6);
+                }
+                return 0;
+            }
+        }
         public DateTime time { get; set; }
         [Required]
         [Remote("IsExist", "Courier", ErrorMessage = "URL exist!")]        

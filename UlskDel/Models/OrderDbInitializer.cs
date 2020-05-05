@@ -31,15 +31,8 @@ namespace UlskDel.Models
             base.Seed(db);
             db.SaveChanges();
 
-            Customer cust = new Customer { Id = first.Id, rating = 0 };
+            Customer cust = new Customer { Id = first.Id, sumVotes = 0, totalVotes = 0 };
             db.Customers.Add(cust);
-
-            //db.Customers.Add(new Customer
-            //{
-            //    Id = first.Id,
-            //    rating = 0
-            //});
-            //base.Seed(db);
 
             string pwd = GetHash("123456");
             User second = db.Users.Add(new User
@@ -69,8 +62,8 @@ namespace UlskDel.Models
 
             var cour = new List<Courier>
             {
-                new Courier {Id = cour1.Id, rating = 0, time = DateTime.Now },
-                new Courier {Id = cour2.Id, rating = 0, time = DateTime.Now }
+                new Courier {Id = cour1.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now },
+                new Courier {Id = cour2.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now }
             };
             cour.ForEach(s => db.Couriers.Add(s));
             db.SaveChanges();

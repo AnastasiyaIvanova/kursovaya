@@ -34,8 +34,14 @@ namespace UlskDel.Controllers
         {
             //Курьер заказа
             Courier c = db.Couriers.FirstOrDefault(x => x.Id == order.CourierId);
-            //Поставить рейтинг!!!!
-            return View();
+            c.sumVotes = c.sumVotes + Convert.ToInt32(Answer);
+            c.totalVotes = c.totalVotes + 1;
+            db.Entry(c).State = EntityState.Modified;
+            db.SaveChanges();
+
+            User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
+            int id = user.Id;
+            return RedirectToAction("Details", "Customers", new { id });
         }
 
         // GET: Customers/Details/5
@@ -67,7 +73,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,rating")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,sumVotes, totalVotes")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +107,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,rating")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,sumVotes,totalVotes")] Customer customer)
         {
             if (ModelState.IsValid)
             {
