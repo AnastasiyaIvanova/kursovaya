@@ -21,6 +21,23 @@ namespace UlskDel.Controllers
             return View(customers.ToList());
         }
 
+        public ActionResult Rate(int id)
+        {
+            Order c = db.Orders.Include(y => y.Courier).FirstOrDefault(x => x.OrderId == id);
+            if (c != null)
+                return PartialView(c);
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult Rate(string Answer, [Bind(Include = "CourierId")] Order order)
+        {
+            //Курьер заказа
+            Courier c = db.Couriers.FirstOrDefault(x => x.Id == order.CourierId);
+            //Поставить рейтинг!!!!
+            return View();
+        }
+
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {

@@ -125,17 +125,61 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.CustomerId)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.UserId)
+                @Html.DisplayFor(model => model.CustomerId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourierId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourierId)
             </dd>
 
         </dl>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-dialog"></div>
     </div>
+
+
+    @if (User.IsInRole("courier"))
+    {
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
+    else
+    {
+        <a href="@Url.Action("Index","LK")">Вернуться в личный кабинет</a>
+    }
+
+    @if (Model.Status == "получен")
+    {
+        @Html.ActionLink("Оценить", "Rate", "Customers", new { id = Model.OrderId }, new { @class = "compItem" })
+
+    }
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            $(".compItem").click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        });
+    </script>
+}

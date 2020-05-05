@@ -70,6 +70,7 @@ namespace UlskDel.Models
         public int Id { get; set; }
         public User User { get; set; }
         public int rating { get; set; }
+        public DateTime time { get; set; }
         [Required]
         [Remote("IsExist", "Courier", ErrorMessage = "URL exist!")]        
         public ICollection<Order> Orders { get; set; }

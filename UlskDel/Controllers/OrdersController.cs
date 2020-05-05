@@ -96,6 +96,26 @@ namespace UlskDel.Controllers
                 order.Status = "обрабатывается";
                 order.Price = 0;
                 order.Print = false;
+                //объем в кубических метрах
+                float volume = order.Height * order.Length * order.Width / 1000000;
+                //список машин с подходящими параметрами
+                IEnumerable<Car> car = db.Cars.Where(x => x.volume >= volume).ToArray();
+                var elem = from s in db.Couriers
+                           select s;
+                //курьер у которого время максимальное
+                Courier cour = db.Couriers.OrderByDescending(y => y.time).First();
+                //проходимся по списку машин
+                foreach (Car x in car)
+                {
+                    //находим водителя/курьера данной машины
+                    //elem = elem.Where(y => y.Id == x.Id);
+                    //отбираем курьера, который быстрее освободится
+                    if (elem.Where(y => y.Id == x.Id).FirstOrDefault().time < cour.time)
+                    {
+                        cour = elem.FirstOrDefault();
+                    }
+                }
+                order.CourierId = cour.Id;
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index","LK");
@@ -124,7 +144,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Status,Weight,Length,Width,Height,Who_pay,Price,UserId")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Status,Weight,Length,Width,Height,Who_pay,Price,CustomerId,CourierId")] Order order)
         {
             if (ModelState.IsValid)
             {

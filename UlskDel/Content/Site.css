@@ -128,3 +128,60 @@ td, th {
     height: 100px;
     margin: 10px 20px;
 }
+
+/*рейтинг*/
+.rating-area form {
+    overflow: hidden;
+    width: 265px;
+    margin: 0 auto;
+    height: 80px;
+    position: relative;
+}
+
+    .rating-area form:not(:checked) > input {
+        display: none;
+    }
+
+    .rating-area form:not(:checked) > label {
+        float: right;
+        width: 42px;
+        padding: 0;
+        cursor: pointer;
+        font-size: 50px;
+        line-height: 50px;
+        color: lightgrey;
+        text-shadow: 1px 1px #bbb;
+    }
+
+        .rating-area form:not(:checked) > label:before {
+            content: '★';
+        }
+
+    .rating-area form > input:checked ~ label {
+        color: gold;
+        text-shadow: 1px 1px #c60;
+    }
+
+    .rating-area form:not(:checked) > label:hover,
+    .rating-area form:not(:checked) > label:hover ~ label {
+        color: gold;
+    }
+
+    .rating-area form > input:checked + label:hover,
+    .rating-area form > input:checked + label:hover ~ label,
+    .rating-area form > input:checked ~ label:hover,
+    .rating-area form > input:checked ~ label:hover ~ label,
+    .rating-area form > label:hover ~ input:checked ~ label {
+        color: gold;
+        text-shadow: 1px 1px goldenrod;
+    }
+
+.rate-area form > label:active {
+    position: relative;
+}
+
+.rating-area form .submit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

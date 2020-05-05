@@ -44,17 +44,18 @@
             }
         </div>
     </header>
-    
+
     <div class="wrapper">
         @RenderBody()
     </div>
     <footer>
         <div class="myfooter">
             @*<p>НОВОСТИ</p>
-            <p>ЗАПРЕЩЕНО К ПЕРЕСЫЛКЕ</p>
-            <p>ВОПРОС-ОТВЕТ</p>*@
+                <p>ЗАПРЕЩЕНО К ПЕРЕСЫЛКЕ</p>
+                <p>ВОПРОС-ОТВЕТ</p>*@
         </div>
     </footer>
+    @RenderSection("Scripts",false);
 </body>
 </html>
 @Scripts.Render("~/scripts/myscript.js")

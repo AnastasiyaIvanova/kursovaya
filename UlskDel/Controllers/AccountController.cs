@@ -63,7 +63,7 @@ namespace UlskDel.Controllers
                     User x = db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = role });
                     if (isCourier)
                     {
-                        db.Couriers.Add(new Courier { Id = x.Id, rating = 0 });
+                        db.Couriers.Add(new Courier { Id = x.Id, rating = 0, time = DateTime.Now });
                     } else db.Customers.Add(new Customer { Id = x.Id, rating = 0 });
                     db.SaveChanges();
                     user = db.Users.Where(u => u.Email == model.Name && u.Password == pwd).FirstOrDefault();

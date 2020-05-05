@@ -1,0 +1,38 @@
+﻿
+@model UlskDel.Models.Order
+
+<div class="modal-content">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+            <h4>Оценка</h4>
+        </div>
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>Текущий рейтинг:</dt>
+                <dd>@Html.DisplayFor(model => model.Courier.rating)</dd>
+
+                <dt>Добавить имя:</dt>
+                <dd>@Html.DisplayFor(model => model.Courier.time)</dd>
+            </dl>
+            <div class="rating-area">
+                @using (Html.BeginForm("Rate", "Customers"))
+                {
+                    @Html.RadioButton("Answer", "5", new { id = "star-5" })
+                    <label for="star-5" title="Оценка «5»"></label>
+                    @Html.RadioButton("Answer", "4", new { id = "star-4" })
+                    <label for="star-4" title="Оценка «4»"></label>
+                    @Html.RadioButton("Answer", "3", new { id = "star-3" })
+                    <label for="star-3" title="Оценка «3»"></label>
+                    @Html.RadioButton("Answer", "2", new { id = "star-2" })
+                    <label for="star-2" title="Оценка «2»"></label>
+                    @Html.RadioButton("Answer", "1", new { id = "star-1" })
+                    <label for="star-1" title="Оценка «1»"></label>
+                    @Html.TextBoxFor(model => model.CourierId)
+                    <div class=submit>
+                        <input type="submit" value="Оценить" />
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>

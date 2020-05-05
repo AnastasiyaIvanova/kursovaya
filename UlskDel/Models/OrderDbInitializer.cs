@@ -8,7 +8,7 @@ using System.Web;
 
 namespace UlskDel.Models
 {
-    public class OrderDbInitializer : DropCreateDatabaseAlways<OrderContext>
+    public class OrderDbInitializer : DropCreateDatabaseIfModelChanges<OrderContext>
         //DropCreateDatabaseIfModelChanges<OrderContext>
 
     {
@@ -69,8 +69,8 @@ namespace UlskDel.Models
 
             var cour = new List<Courier>
             {
-                new Courier {Id = cour1.Id, rating = 0 },
-                new Courier {Id = cour2.Id, rating = 0 }
+                new Courier {Id = cour1.Id, rating = 0, time = DateTime.Now },
+                new Courier {Id = cour2.Id, rating = 0, time = DateTime.Now }
             };
             cour.ForEach(s => db.Couriers.Add(s));
             db.SaveChanges();
