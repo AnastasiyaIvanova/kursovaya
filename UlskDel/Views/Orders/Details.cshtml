@@ -161,9 +161,17 @@
 
     @if (Model.Status == "получен")
     {
-        @Html.ActionLink("Оценить", "Rate", "Customers", new { id = Model.OrderId }, new { @class = "compItem" })
+        if (User.IsInRole("customer"))
+        {
+            @Html.ActionLink("Оценить", "Rate", "Customers", new { id = Model.OrderId }, new { @class = "compItem" })
+        }
+        else
+        {
+            @Html.ActionLink("Оценить", "Rate", "Couriers", new { id = Model.OrderId }, new { @class = "compItem" })
+        }
 
-    }
+
+        }
 
 </div>
 @section Scripts {

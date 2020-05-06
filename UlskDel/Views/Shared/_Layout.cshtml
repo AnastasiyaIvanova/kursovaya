@@ -18,7 +18,7 @@
                 <li>@Html.ActionLink("Главная", "Index", "Home")</li>
                 <li>@Html.ActionLink("О нас", "About", "Home")</li>
                 <li>@Html.ActionLink("Расчет стоимости доставки", "Count", "Home")</li>
-                @if (User.IsInRole("courier"))
+                @if (User.IsInRole("courier")) 
                 {
                     <li>@Html.ActionLink("Заказы", "Index", "Orders")</li>
                 }
@@ -31,7 +31,7 @@
         <div class="user">
             @if (User.Identity.IsAuthenticated)
             {
-                if (User.IsInRole("customer"))
+                if (User.IsInRole("customer") || User.IsInRole("courier"))
                 {
                     <a href="@Url.Action("Index","LK")">@User.Identity.Name</a>
                 }

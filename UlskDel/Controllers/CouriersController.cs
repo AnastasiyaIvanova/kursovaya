@@ -21,6 +21,29 @@ namespace UlskDel.Controllers
             return View(couriers.ToList());
         }
 
+        public ActionResult Rate(int id)
+        {
+            Order c = db.Orders.Include(y => y.Customer).FirstOrDefault(x => x.OrderId == id);
+            if (c != null)
+                return PartialView(c);
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult Rate(string Answer, [Bind(Include = "CustomerId")] Order order)
+        {
+            //Заказчик
+            Customer c = db.Customers.FirstOrDefault(x => x.Id == order.CustomerId);
+            c.sumVotes = c.sumVotes + Convert.ToInt32(Answer);
+            c.totalVotes = c.totalVotes + 1;
+            db.Entry(c).State = EntityState.Modified;
+            db.SaveChanges();
+
+            User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
+            int id = user.Id;
+            return RedirectToAction("Details", "Couriers", new { id });
+        }
+
         // GET: Couriers/Details/5
         public ActionResult Details(int? id)
         {
@@ -28,7 +51,9 @@ namespace UlskDel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Courier courier = db.Couriers.Find(id);
+
+            Courier courier = db.Couriers.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);            
+            //Customer customer = db.Customers.Find(id);
             if (courier == null)
             {
                 return HttpNotFound();
