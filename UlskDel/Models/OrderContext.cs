@@ -120,7 +120,9 @@ namespace UlskDel.Models
         [Key]
         [ForeignKey("Courier")]
         public int Id { get; set; }
+        public string name { get; set; }
         public float volume { get; set; }
+        public int speed { get; set; }
         public Courier Courier { get; set; }
     }
 

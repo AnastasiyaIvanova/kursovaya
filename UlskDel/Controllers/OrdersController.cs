@@ -86,36 +86,87 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Weight,Length,Width,Height,Who_pay")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Weight,Length,Width,Height,Price,Who_pay")] Order order)
         {
             if (ModelState.IsValid)
             {
+                //User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
+                //int id = user.Id;
+                //order.CustomerId = id;
+                //order.Status = "обрабатывается";
+                //order.Print = false;
+                ////объем в кубических метрах
+                //float volume = order.Height * order.Length * order.Width / 1000000;
+                ////список машин с подходящими параметрами
+                //IEnumerable<Car> car = db.Cars.Where(x => x.volume >= volume).ToArray();
+                //var elem = from s in db.Couriers
+                //           select s;
+                ////курьер у которого время максимальное
+                //Courier cour = db.Couriers.OrderByDescending(y => y.time).First();
+                ////проходимся по списку машин
+                //foreach (Car x in car)
+                //{
+                //    //находим водителя/курьера данной машины
+                //    //и отбираем курьера, который быстрее освободится
+                //    if (elem.Where(y => y.Id == x.Id).FirstOrDefault().time < cour.time)
+                //    {
+                //        cour = elem.FirstOrDefault();
+                //    }
+                //}
+                //order.CourierId = cour.Id;
+
+                //float weigth = order.Height * order.Length * order.Width;
+                //if (order.Weight > weigth)
+                //{
+                //    weigth = order.Weight;
+                //}
+                ////расстояние доставки
+                //float distance = order.Price / weigth;
+                ////автомобиль
+                //Car del_car = db.Cars.FirstOrDefault(y => y.Id == cour.Id);
+                ////время доставки
+                //float time_del = distance / del_car.speed;
+
                 User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
                 int id = user.Id;
                 order.CustomerId = id;
                 order.Status = "обрабатывается";
-                order.Price = 0;
                 order.Print = false;
                 //объем в кубических метрах
                 float volume = order.Height * order.Length * order.Width / 1000000;
                 //список машин с подходящими параметрами
-                IEnumerable<Car> car = db.Cars.Where(x => x.volume >= volume).ToArray();
-                var elem = from s in db.Couriers
-                           select s;
-                //курьер у которого время максимальное
-                Courier cour = db.Couriers.OrderByDescending(y => y.time).First();
-                //проходимся по списку машин
-                foreach (Car x in car)
+                IEnumerable<Car> car = db.Cars.Include(c => c.Courier).Where(c => c.volume >= volume).ToArray();
+                Car car_del = db.Cars.OrderBy(y => y.Id).First();
+
+                float weigth = order.Height * order.Length * order.Width / 5000;
+                if (order.Weight > weigth)
                 {
-                    //находим водителя/курьера данной машины
-                    //elem = elem.Where(y => y.Id == x.Id);
-                    //отбираем курьера, который быстрее освободится
-                    if (elem.Where(y => y.Id == x.Id).FirstOrDefault().time < cour.time)
-                    {
-                        cour = elem.FirstOrDefault();
-                    }
+                    weigth = order.Weight;
                 }
-                order.CourierId = cour.Id;
+                //расстояние доставки
+                float distance = order.Price / weigth;
+                //время доставки
+                float time_del = distance / car_del.speed;
+                
+                try
+                {
+                    //пытаемся найти машину, которая будет свободна во время order.time
+                    car_del = car.Where(x => x.Courier.time <= order.Date).FirstOrDefault();
+                    //дата заказа со временем
+                    order.Date = order.Date.AddHours(order.Time.Hour).AddMinutes(order.Time.Minute);
+                    //время до выполнения заказа с доп 2 днями
+                    car_del.Courier.time = order.Date.AddHours(time_del).AddDays(2);
+                }
+                catch
+                {
+                    //если такой нет, берем ту, которая первая освободится
+                    DateTime min = car.Min(a => a.Courier.time);
+                    car_del = car.FirstOrDefault(a => a.Courier.time == min);
+                    car_del.Courier.time = car_del.Courier.time.AddHours(time_del).AddDays(2);
+                }
+                //привязываем курьера к данному заказу
+                order.CourierId = car_del.Courier.Id;
+
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index","LK");
