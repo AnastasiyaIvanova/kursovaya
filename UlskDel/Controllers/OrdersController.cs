@@ -90,43 +90,6 @@ namespace UlskDel.Controllers
         {
             if (ModelState.IsValid)
             {
-                //User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
-                //int id = user.Id;
-                //order.CustomerId = id;
-                //order.Status = "обрабатывается";
-                //order.Print = false;
-                ////объем в кубических метрах
-                //float volume = order.Height * order.Length * order.Width / 1000000;
-                ////список машин с подходящими параметрами
-                //IEnumerable<Car> car = db.Cars.Where(x => x.volume >= volume).ToArray();
-                //var elem = from s in db.Couriers
-                //           select s;
-                ////курьер у которого время максимальное
-                //Courier cour = db.Couriers.OrderByDescending(y => y.time).First();
-                ////проходимся по списку машин
-                //foreach (Car x in car)
-                //{
-                //    //находим водителя/курьера данной машины
-                //    //и отбираем курьера, который быстрее освободится
-                //    if (elem.Where(y => y.Id == x.Id).FirstOrDefault().time < cour.time)
-                //    {
-                //        cour = elem.FirstOrDefault();
-                //    }
-                //}
-                //order.CourierId = cour.Id;
-
-                //float weigth = order.Height * order.Length * order.Width;
-                //if (order.Weight > weigth)
-                //{
-                //    weigth = order.Weight;
-                //}
-                ////расстояние доставки
-                //float distance = order.Price / weigth;
-                ////автомобиль
-                //Car del_car = db.Cars.FirstOrDefault(y => y.Id == cour.Id);
-                ////время доставки
-                //float time_del = distance / del_car.speed;
-
                 User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
                 int id = user.Id;
                 order.CustomerId = id;
@@ -203,6 +166,13 @@ namespace UlskDel.Controllers
                 if (order.Status!="обрабатывается")
                 {
                     order.Print = true;
+                }
+                //Нашли курьера данного заказа
+                Courier courier = db.Couriers.FirstOrDefault(a => a.Id == order.CourierId);
+                if (order.Status != "получен" && courier.Orders.Count == 1)
+                {
+                    //Курьер завершил все заказы и стал свободен
+                    courier.time = DateTime.Now;
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");

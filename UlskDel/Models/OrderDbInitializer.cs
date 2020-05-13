@@ -73,9 +73,7 @@ namespace UlskDel.Models
                 new Car { volume = 1.5f, Id = cour[0].Id, name = "Renault Kangoo", speed = 90},
                 new Car { volume = 7.5f, Id = cour[1].Id, name = "Hyundai Porter", speed = 80 }
                 
-                //new Car { volume = 9, },
-                //new Car { volume = 15, },
-                //new Car { volume = 19.5f, }
+                //new Car { volume = 9, }
             };
             car.ForEach(s => db.Cars.Add(s));
             db.SaveChanges();

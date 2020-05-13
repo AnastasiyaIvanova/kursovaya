@@ -127,7 +127,7 @@ namespace UlskDel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Courier courier = db.Couriers.Find(id);
+            Courier courier = db.Couriers.Include(c => c.User).FirstOrDefault(c => c.Id ==id);
             if (courier == null)
             {
                 return HttpNotFound();
