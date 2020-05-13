@@ -38,6 +38,7 @@ namespace UlskDel.Models
     public class Role
     {
         public int Id { get; set; }
+        [Display(Name = "Роль")]
         public string Name { get; set; }
     }
 
@@ -49,6 +50,7 @@ namespace UlskDel.Models
         public User User { get; set; }
         public int sumVotes { get; set; }
         public int totalVotes { get; set; }
+        [Display(Name = "Рейтинг")]
         public double rating
         {
             get
@@ -88,6 +90,7 @@ namespace UlskDel.Models
         public User User { get; set; }
         public int sumVotes { get; set; }
         public int totalVotes { get; set; }
+        [Display(Name = "Рейтинг")]
         public double rating
         {
             get
@@ -105,6 +108,7 @@ namespace UlskDel.Models
                 return 0;
             }
         }
+        [Display(Name = "Время")]
         public DateTime time { get; set; }
         [Required]
         [Remote("IsExist", "Courier", ErrorMessage = "URL exist!")]        
@@ -120,8 +124,11 @@ namespace UlskDel.Models
         [Key]
         [ForeignKey("Courier")]
         public int Id { get; set; }
+        [Display(Name = "Название")]
         public string name { get; set; }
+        [Display(Name = "Объем")]
         public float volume { get; set; }
+        [Display(Name = "Скорость")]
         public int speed { get; set; }
         public Courier Courier { get; set; }
     }

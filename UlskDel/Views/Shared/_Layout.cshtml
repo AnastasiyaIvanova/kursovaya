@@ -18,14 +18,16 @@
                 <li>@Html.ActionLink("Главная", "Index", "Home")</li>
                 <li>@Html.ActionLink("О нас", "About", "Home")</li>
                 <li>@Html.ActionLink("Расчет стоимости доставки", "Count", "Home")</li>
-                @if (User.IsInRole("courier")) 
+                @if (User.IsInRole("courier"))
                 {
                     <li>@Html.ActionLink("Заказы", "Index", "Orders")</li>
                 }
                 @if (User.IsInRole("admin"))
                 {
-                    <li>@Html.ActionLink("Юзеры", "Index", "Users")</li>
+                    <li>@Html.ActionLink("Пользователи", "Index", "Users")</li>
+                    <li>@Html.ActionLink("Автомобили", "Index", "Cars")</li>
                 }
+
             </ul>
         </div>
         <div class="user">
