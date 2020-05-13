@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Count</h2>
+<h2>Расчет</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Order</h4>
+    <h4>Заказ</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -71,11 +71,6 @@
         <div id="message"></div>
     </div>
     <input type="button" value="Рассчитать" onclick="onClick()" />
-    @*<div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Count" onclick="onClick()" class="btn btn-default" />
-            </div>
-        </div>*@
 </div>
     
 }

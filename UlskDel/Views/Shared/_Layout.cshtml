@@ -37,12 +37,12 @@
                 {
                     <a href="@Url.Action("Index","LK")">@User.Identity.Name</a>
                 }
-                <p>@Html.ActionLink("Log Out", "Logoff", "Account")</p>
+                <p>@Html.ActionLink("Выйти", "Logoff", "Account")</p>
             }
             else
             {
-                <p>@Html.ActionLink("Log In", "Login", "Account")</p>
-                <p>@Html.ActionLink("Auth", "Register", "Account")</p>
+                <p>@Html.ActionLink("Войти", "Login", "Account")</p>
+                <p>@Html.ActionLink("Зарегистрироваться", "Register", "Account")</p>
             }
         </div>
     </header>
