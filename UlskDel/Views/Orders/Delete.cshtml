@@ -125,11 +125,19 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.CourierId)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.UserId)
+                @Html.DisplayFor(model => model.CourierId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerId)
             </dd>
 
         </dl>
@@ -139,7 +147,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
+                <input type="submit" value="Удалить" class="btn btn-default" /> |
                 @Html.ActionLink("Назад", "Index")
             </div>
         }

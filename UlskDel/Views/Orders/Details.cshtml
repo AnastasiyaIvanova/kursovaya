@@ -6,10 +6,10 @@
 }
 
 <div class="table-wrapper">
-    <h2>Details</h2>
+    <h2>Детали</h2>
 
     <div>
-        <h4>Order</h4>
+        <h4>Заказ</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -150,11 +150,11 @@
     @if (User.IsInRole("courier"))
     {
         <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
+            @Html.ActionLink("Редактировать", "Edit", new { id = Model.OrderId }) |
             @Html.ActionLink("Назад", "Index")
         </p>
     }
-    else
+    else if (User.IsInRole("customer"))
     {
         <a href="@Url.Action("Index","LK")">Вернуться в личный кабинет</a>
     }
