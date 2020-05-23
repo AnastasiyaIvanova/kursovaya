@@ -8,9 +8,12 @@ function init() {
     var mapDivId = 'map'; //Id контейнера для карты 
     var mapCenter = [55.76, 37.64]; //Координата центра карты по умолчанию
     map = new ymaps.Map(mapDivId, { center: mapCenter, zoom: 10 });
+    geocode('#suggest', '#notice');
+    geocode('#suggest2', '#notice2');
 
     // При клике по кнопке запускаем верификацию введёных данных.
     $('#suggest').on('change', function (e) {
+        console.log($('#suggest').val());
         geocode('#suggest', '#notice');
     });
     $('#suggest2').on('change', function (e) {
@@ -24,7 +27,7 @@ function init() {
         ymaps.geocode(request).then(function (res) {
             var obj = res.geoObjects.get(0),
                 error, hint;
-
+            console.log(obj);
             if (obj) {
                 // Об оценке точности ответа геокодера можно прочитать тут: https://tech.yandex.ru/maps/doc/geocoder/desc/reference/precision-docpage/
                 switch (obj.properties.get('metaDataProperty.GeocoderMetaData.precision')) {
@@ -130,31 +133,34 @@ function onClick() {
     var length = document.getElementById("Length").value;
     var width = document.getElementById("Width").value;
     var height = document.getElementById("Height").value;
-    //var elPrice = document.getElementById("price").value;
 
-    ymaps.route([A, B]).then(
-        function (route) {
-            var distance = route.getHumanLength(); //Получаем расстояние
-            
-            var s = distance.replace(' ', ' ');
-            var x = s.toString();
-            var k = x.indexOf("&");
-            x = x.substr(0, k);//расстояние
-            //Получаем объемный вес
-            var v = (length * width * height) / 5000;
-            var price = weight;
-            if (v > parseFloat(weight)) {
-                price = v;
+    if (!A.trim() || !B.trim()) {
+        alert("Введите адреса");
+    } else {
+        ymaps.route([A, B]).then(
+            function (route) {
+                var distance = route.getHumanLength(); //Получаем расстояние
+
+                var s = distance.replace(' ', ' ');
+                var x = s.toString();
+                var k = x.indexOf("&");
+                x = x.substr(0, k);//расстояние
+                //Получаем объемный вес
+                var v = (length * width * height) / 5000;
+                var price = weight;
+                if (v > parseFloat(weight)) {
+                    price = v;
+                }
+                price = Math.round(price * 0.1 + x * 0.5);//цена
+                $('#price').val(price);
+                price = "Это примерная стоимость доставки.Окончательная установится после взвешивания груза";
+                $('#message').text(price);
+
+                map.geoObjects.add(route); //Рисуем маршрут на карте
+            },
+            function (error) {
+                alert('Ошибка: ' + error.message);
             }
-            price = Math.round(price * x);//цена
-            $('#price').val(price);
-            price = "Расчетная стоимость " + price + "P";
-            $('#message').text(price);
-            
-            map.geoObjects.add(route); //Рисуем маршрут на карте
-        },
-        function (error) {
-            alert('Ошибка: ' + error.message);
-        }
-    );
+        );
+    }
 }

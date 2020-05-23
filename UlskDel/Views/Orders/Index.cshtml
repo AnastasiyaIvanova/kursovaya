@@ -69,7 +69,9 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.OrderId }) |
+                @if (item.Status != "отправлен") {
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.OrderId });
+                }
                 @Html.ActionLink("Детали", "Details", new { id = item.OrderId }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.OrderId })
             </td>

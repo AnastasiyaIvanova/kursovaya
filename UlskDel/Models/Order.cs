@@ -54,6 +54,7 @@ namespace UlskDel.Models
         [Display(Name = "Оплата отправителем")]
         public bool Who_pay { get; set; }
         [Display(Name = "Цена")]
+        [Required(ErrorMessage = "Нажмите кнопку Расчитать")]
         public int Price { get; set; }
         public bool Print { get; set; }
         public int CustomerId { get; set; }

@@ -102,6 +102,11 @@ td, th {
     margin: 0 20px;
 }
 
+.wrapper .create-wrapper {
+    width:70%;
+    margin:auto;
+}
+
 .wrapper .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 3px;
     width: 145px;
