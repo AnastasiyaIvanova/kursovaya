@@ -36,7 +36,7 @@ namespace UlskDel.Models
         [Display(Name = "Статус")]
         public string Status { get; set; }
         [Display(Name = "Вес, кг")]
-        [Range(0,100)]
+        [Range(0,10)]
         [Required]
         public float Weight { get; set; }
         [Display(Name = "Длина, см")]
