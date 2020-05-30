@@ -218,7 +218,7 @@ namespace UlskDel.Controllers
             {
                 return HttpNotFound();
             }
-            string Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/MyFile.pdf";
+            string Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/MyFile2.pdf";
             Document DC = new Document();
             DC.SetPageSize(PageSize.A4.Rotate());
             FileStream FS = System.IO.File.Create(Path);
@@ -322,12 +322,52 @@ namespace UlskDel.Controllers
             DC.Add(table2);
 
             DC.Add(new Paragraph("Я подтверждаю, что информация в накладной является полной и точной. С основными условиями пересылки я ознакомлен(а).", font));
-            DC.SetMargins(10, 10, 10, 10);
-            DC.Add(new Paragraph("Подпись_________________", font));
+            DC.SetMargins(100, 10, 10, 10);
+            DC.Add(new Paragraph("Подпись заказчика_________________", font));
+            DC.SetMargins(100, 10, 10, 10);
+            DC.Add(new Paragraph("Подпись курьера_________________", font));
+            DC.SetMargins(100, 10, 100, 10);
+
+
+            //добавление QR-кода
+            //using (var wc = new WebClient())
+            //{
+            //    using (var imgStream = new MemoryStream(wc.DownloadData(GET("https://api.qrserver.com/v1/create-qr-code/?size=150x150", "data=http://192.168.1.8:3000/Orders/Details/2&charset-source=ISO-8859-1"))))
+            //    {
+            //        using (var image = System.Drawing.Image.FromStream(imgStream))
+            //        {
+            //            iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance(image, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //            DC.Add(pic);
+            //        }
+            //    }
+            //}
+
+            iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance(GET("https://api.qrserver.com/v1/create-qr-code/?size=150x150", "data=http://192.168.1.8:3000/Orders/Details/2&charset-source=ISO-8859-1"));
+            DC.Add(pic);
             DC.Close();
             
             return RedirectToAction("Index", "LK");
             
+        }
+
+        private static byte[] GET(string Url, string Data)
+        {
+            WebRequest req = WebRequest.Create(Url + "&" + Data);
+            //WebResponse resp = req.GetResponse();
+            //Stream stream = resp.GetResponseStream();
+            //StreamReader sr = new StreamReader(stream);
+            //string Out = sr.ReadToEnd();
+            //sr.Close();
+            //return Out;
+            byte[] bytes;
+            using (HttpWebResponse res = (HttpWebResponse)req.GetResponse())
+            using (Stream responseStream = res.GetResponseStream())
+            using (MemoryStream mstream = new MemoryStream())
+            {
+                responseStream.CopyTo(mstream);
+                bytes = mstream.ToArray();
+            }
+            return bytes;
         }
 
         //Сохранение отчета в xls
