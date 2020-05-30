@@ -86,7 +86,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Weight,Length,Width,Height,Price,Who_pay")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Area_Sender,Area_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Weight,Length,Width,Height,Price,Big,Fragile,Who_pay")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -95,40 +95,18 @@ namespace UlskDel.Controllers
                 order.CustomerId = id;
                 order.Status = "обрабатывается";
                 order.Print = false;
-                //объем в кубических метрах
-                float volume = order.Height * order.Length * order.Width / 1000000;
-                //список машин с подходящими параметрами
-                IEnumerable<Car> car = db.Cars.Include(c => c.Courier).Where(c => c.volume >= volume).ToArray();
-                Car car_del = db.Cars.OrderBy(y => y.Id).First();
-
-                float weigth = order.Height * order.Length * order.Width / 5000;
-                if (order.Weight > weigth)
+                //Находим курьера для получения посылки
+                var elem = from s in db.Couriers
+                           select s;
+                if (order.Big)
                 {
-                    weigth = order.Weight;
-                }
-                //расстояние доставки
-                float distance = order.Price / weigth;
-                //время доставки
-                float time_del = distance / car_del.speed;
-                
-                try
+                    elem = elem.Where(x => x.oversize);
+                } else
                 {
-                    //пытаемся найти машину, которая будет свободна во время order.time
-                    car_del = car.Where(x => x.Courier.time <= order.Date).FirstOrDefault();
-                    //дата заказа со временем
-                    order.Date = order.Date.AddHours(order.Time.Hour).AddMinutes(order.Time.Minute);
-                    //время до выполнения заказа с доп 2 днями
-                    car_del.Courier.time = order.Date.AddHours(time_del).AddDays(2);
-                }
-                catch
-                {
-                    //если такой нет, берем ту, которая первая освободится
-                    DateTime min = car.Min(a => a.Courier.time);
-                    car_del = car.FirstOrDefault(a => a.Courier.time == min);
-                    car_del.Courier.time = car_del.Courier.time.AddHours(time_del).AddDays(2);
+                    elem = elem.Where(x => x.Area == order.Area_Sender);
                 }
                 //привязываем курьера к данному заказу
-                order.CourierId = car_del.Courier.Id;
+                order.CourierId = elem.FirstOrDefault().Id;
 
                 db.Orders.Add(order);
                 db.SaveChanges();

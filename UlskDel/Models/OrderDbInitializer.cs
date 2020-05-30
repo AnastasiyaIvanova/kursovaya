@@ -9,7 +9,6 @@ using System.Web;
 namespace UlskDel.Models
 {
     public class OrderDbInitializer : DropCreateDatabaseIfModelChanges<OrderContext>
-        //DropCreateDatabaseIfModelChanges<OrderContext>
 
     {
         protected override void Seed(OrderContext db)
@@ -58,12 +57,37 @@ namespace UlskDel.Models
                 Password = pwd2,
                 Role = courier
             });
+            base.Seed(db);
+            User cour3 = db.Users.Add(new User
+            {
+                Email = "courier3@mail.com",
+                Password = pwd2,
+                Role = courier
+            });
+            base.Seed(db);
+            User cour4 = db.Users.Add(new User
+            {
+                Email = "courier4@mail.com",
+                Password = pwd2,
+                Role = courier
+            });
+            base.Seed(db);
+            User cour5 = db.Users.Add(new User
+            {
+                Email = "courier5@mail.com",
+                Password = pwd2,
+                Role = courier
+            });
+            base.Seed(db);
             db.SaveChanges();
 
             var cour = new List<Courier>
             {
-                new Courier {Id = cour1.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now },
-                new Courier {Id = cour2.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now }
+                new Courier {Id = cour1.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Ленинский },
+                new Courier {Id = cour2.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Железнодорожный },
+                new Courier {Id = cour3.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Заволжский },
+                new Courier {Id = cour4.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Засвияжский },
+                new Courier {Id = cour5.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Засвияжский, oversize = true }
             };
             cour.ForEach(s => db.Couriers.Add(s));
             db.SaveChanges();

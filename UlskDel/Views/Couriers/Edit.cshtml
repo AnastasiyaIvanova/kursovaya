@@ -34,6 +34,19 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Area, new[] {
+            new SelectListItem() {Text = "Железнодорожный", Value = "Железнодорожный"},
+            new SelectListItem() {Text = "Заволжский", Value = "Заволжский"},
+            new SelectListItem() {Text = "Засвияжский", Value = "Засвияжский"},
+            new SelectListItem() {Text = "Ленинский", Value = "Ленинский"}
+            })
+            @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Сохранить" class="btn btn-default" />
         </div>

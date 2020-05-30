@@ -63,7 +63,8 @@ namespace UlskDel.Controllers
                     User x = db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = role });
                     if (isCourier)
                     {
-                        db.Couriers.Add(new Courier { Id = x.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now });
+                        //return PartialView();
+                        db.Couriers.Add(new Courier { Id = x.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Ленинский });
                     } else db.Customers.Add(new Customer { Id = x.Id, sumVotes = 0, totalVotes = 0 });
                     db.SaveChanges();
                     user = db.Users.Where(u => u.Email == model.Name && u.Password == pwd).FirstOrDefault();

@@ -3,8 +3,9 @@ var suggestView1;
 var suggestView2;
 
 function init() {
-    suggestView1 = new ymaps.SuggestView('suggest');
-    suggestView2 = new ymaps.SuggestView('suggest2');
+    suggestView1 = new ymaps.SuggestView('suggest', {boundedBy: [[54.35, 48.24],[54.30, 48.73]]});
+    suggestView2 = new ymaps.SuggestView('suggest2', { boundedBy: [[54.35, 48.24], [54.30, 48.73]] });
+
     var mapDivId = 'map'; //Id контейнера для карты 
     var mapCenter = [55.76, 37.64]; //Координата центра карты по умолчанию
     map = new ymaps.Map(mapDivId, { center: mapCenter, zoom: 10 });
@@ -13,7 +14,6 @@ function init() {
 
     // При клике по кнопке запускаем верификацию введёных данных.
     $('#suggest').on('change', function (e) {
-        console.log($('#suggest').val());
         geocode('#suggest', '#notice');
     });
     $('#suggest2').on('change', function (e) {
@@ -151,9 +151,9 @@ function onClick() {
                 if (v > parseFloat(weight)) {
                     price = v;
                 }
-                price = Math.round(price * 0.1 + x * 0.5);//цена
+                price = Math.round(price * x);//цена
                 $('#price').val(price);
-                price = "Это примерная стоимость доставки.Окончательная установится после взвешивания груза";
+                price = price + "Это примерная стоимость доставки.Окончательная установится после взвешивания груза";
                 $('#message').text(price);
 
                 map.geoObjects.add(route); //Рисуем маршрут на карте

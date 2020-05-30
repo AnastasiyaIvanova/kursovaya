@@ -110,6 +110,9 @@ namespace UlskDel.Models
         }
         [Display(Name = "Время")]
         public DateTime time { get; set; }
+        [Display(Name = "Газель")]
+        public bool oversize { get; set; }
+        public Areas Area { get; set; }
         [Required]
         [Remote("IsExist", "Courier", ErrorMessage = "URL exist!")]        
         public ICollection<Order> Orders { get; set; }

@@ -241,6 +241,7 @@
     <Content Include="Views\Cars\Index.cshtml" />
     <Content Include="Views\Customers\Rate.cshtml" />
     <Content Include="Views\Couriers\Rate.cshtml" />
+    <Content Include="Views\Account\RegCourier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

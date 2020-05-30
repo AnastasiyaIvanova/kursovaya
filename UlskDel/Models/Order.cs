@@ -20,6 +20,8 @@ namespace UlskDel.Models
         [Display(Name = "Адрес получателя")]
         [MinLength(4)]
         public string Address_Receiver { get; set; }
+        public Areas Area_Sender { get; set; }
+        public Areas Area_Receiver { get; set; }
         [RegularExpression(@"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$", ErrorMessage = "Invalid Phone Number.")]
         [Display(Name = "Номер отправителя")]
         public string Phone_Sender { get; set; }
@@ -51,6 +53,10 @@ namespace UlskDel.Models
         [Range(0, 200)]
         [Required]
         public float Height { get; set; }
+        [Display(Name = "Не габаритный")]
+        public bool Big { get; set; }
+        [Display(Name = "Хрупкое")]
+        public bool Fragile { get; set; }
         [Display(Name = "Оплата отправителем")]
         public bool Who_pay { get; set; }
         [Display(Name = "Цена")]
@@ -62,5 +68,13 @@ namespace UlskDel.Models
         public int CourierId { get; set; }
         public Courier Courier { get; set; }
         
+    }
+
+    public enum Areas : byte
+    {
+        Железнодорожный = 1,
+        Заволжский = 2,
+        Засвияжский = 3,
+        Ленинский = 4
     }
 }
