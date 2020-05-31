@@ -101,12 +101,6 @@ namespace UlskDel.Controllers
                 }
                 //привязываем курьера к данному заказу
                 order.CourierId = elem.FirstOrDefault().Id;
-
-                //если хрупкое
-                if (order.Fragile)
-                {
-                    order.Price = order.Price + 50;
-                }
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index","LK");
@@ -150,6 +144,16 @@ namespace UlskDel.Controllers
                 {
                     //Курьер завершил все заказы и стал свободен
                     courier.time = DateTime.Now;
+                }
+                //заказчик
+                Customer customer = db.Customers.FirstOrDefault(a => a.Id == order.CustomerId);
+                if (customer.rating > 0 && customer.rating < 2.07)
+                {
+                    order.Price = (int)Math.Round(order.Price * 1.5);
+                }
+                else if (customer.rating >= 3.1)
+                {
+                    order.Price = (int)Math.Round(order.Price * 1.5);
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");
