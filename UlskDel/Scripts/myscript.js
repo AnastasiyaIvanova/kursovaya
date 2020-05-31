@@ -133,6 +133,8 @@ function onClick() {
     var length = document.getElementById("Length").value;
     var width = document.getElementById("Width").value;
     var height = document.getElementById("Height").value;
+    var fragile = document.getElementById("fragile");
+    alert(fragile.value);
 
     if (!A.trim() || !B.trim()) {
         alert("Введите адреса");
@@ -153,7 +155,19 @@ function onClick() {
                     price = v;
                 }
                 price = Math.round(price * 6 + 4 * x);//цена
-                $('#price').val(price);
+                
+                
+                if (fragile.checked) {
+                    price = price + 50;
+                }
+                //$("#fragile").change(function () {
+                //    console.log("check");
+                //    if ($(this).is(':checked')) {
+                //        price = price + 50;
+                        
+                //    }
+                //});
+                //$('#price').val(price);
                 price = price + "р. Это примерная стоимость доставки.Окончательная установится после взвешивания груза";
                 $('#message').text(price);
 
@@ -165,3 +179,5 @@ function onClick() {
         );
     }
 }
+
+    

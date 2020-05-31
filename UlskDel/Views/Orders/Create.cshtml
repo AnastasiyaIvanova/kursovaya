@@ -166,7 +166,7 @@
             @Html.LabelFor(model => model.Fragile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Fragile)
+                    @Html.EditorFor(model => model.Fragile, new { htmlAttributes = new { @id = "fragile" } })
                     @Html.ValidationMessageFor(model => model.Fragile, "", new { @class = "text-danger" })
                 </div>
             </div>
