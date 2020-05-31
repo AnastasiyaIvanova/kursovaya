@@ -19,7 +19,6 @@ namespace UlskDel.Models
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Courier> Couriers { get; set; }
-        public DbSet<Car> Cars { get; set; }
     }
     public class User
     {
@@ -120,20 +119,6 @@ namespace UlskDel.Models
         {
             Orders = new List<Order>();
         }
-    }
-
-    public class Car
-    {
-        [Key]
-        [ForeignKey("Courier")]
-        public int Id { get; set; }
-        [Display(Name = "Название")]
-        public string name { get; set; }
-        [Display(Name = "Объем")]
-        public float volume { get; set; }
-        [Display(Name = "Скорость")]
-        public int speed { get; set; }
-        public Courier Courier { get; set; }
     }
 
 }

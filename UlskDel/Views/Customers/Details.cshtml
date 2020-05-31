@@ -11,14 +11,6 @@
     <div>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.User.Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.User.Email)
-            </dd>
-
             <dt>Заказы</dt>
             @if (Model.Orders.Count == 0)
             {
@@ -34,17 +26,9 @@
                     <th>Получатель</th>
                     <th>Адрес отправителя</th>
                     <th>Адрес получателя</th>
-                    @*<th>Телефон отправителя</th>
-                        <th>Телефон получателя</th>*@
                     <th>Дата</th>
                     <th>Время</th>
                     <th>Статус</th>
-                    @*<th>Вес</th>
-                        <th>Длина</th>
-                        <th>Ширина</th>
-                        <th>Высота</th>
-                        <th>Оплата отправителем</th>
-                        <th>Цена</th>*@
                     <th></th>
                 </tr>
 
@@ -63,12 +47,6 @@
                         <td>
                             @Html.DisplayFor(modelItem => order.Address_Receiver)
                         </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => order.Phone_Sender)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => order.Phone_Receiver)
-                            </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => order.Date)
                         </td>
@@ -78,24 +56,6 @@
                         <td>
                             @Html.DisplayFor(modelItem => order.Status)
                         </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => order.Weight)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => order.Height)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => order.Length)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => order.Width)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => order.Who_pay)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => order.Price)
-                            </td>*@
                         <td>
                             @Html.ActionLink("Детали", "Details", "Orders", new { id = order.OrderId }, null)|
                             @if (order.Print)
@@ -118,31 +78,3 @@
         @Html.ActionLink("Изменить почту или пароль", "Edit", new { id = Model.Id })
     </p>
 </div>
-@*<h2>Details</h2>
-
-    <div>
-        <h4>Customer</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.User.Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.User.Email)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.rating)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.rating)
-            </dd>
-
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Назад "Index")
-    </p>*@

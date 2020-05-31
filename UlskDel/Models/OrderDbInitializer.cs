@@ -91,18 +91,6 @@ namespace UlskDel.Models
             };
             cour.ForEach(s => db.Couriers.Add(s));
             db.SaveChanges();
-
-            var car = new List<Car>
-            {
-                new Car { volume = 1.5f, Id = cour[0].Id, name = "Renault Kangoo", speed = 90},
-                new Car { volume = 7.5f, Id = cour[1].Id, name = "Hyundai Porter", speed = 80 }
-                
-                //new Car { volume = 9, }
-            };
-            car.ForEach(s => db.Cars.Add(s));
-            db.SaveChanges();
-
-            
         }
 
         private string GetHash(string input)

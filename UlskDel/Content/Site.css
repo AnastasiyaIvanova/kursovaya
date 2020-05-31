@@ -1,13 +1,10 @@
-﻿/*body {
-}*/
-
-td, th {
+﻿td, th {
     border: 2px solid;
 }
 
 .myheader {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 20px;
 }
 
@@ -22,7 +19,7 @@ td, th {
 
     .myheader .user {
         display: flex;
-        margin: auto;
+        margin: auto 0;
     }
 
 .myheader .user p:last-child {
@@ -30,7 +27,7 @@ td, th {
 }
 
 .menu {
-    margin: auto;
+    margin: auto 0;
 }
 
 .menu ul {

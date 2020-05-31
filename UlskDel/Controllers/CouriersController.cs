@@ -45,15 +45,23 @@ namespace UlskDel.Controllers
         }
 
         // GET: Couriers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, bool searchString = false)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Courier courier = db.Couriers.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
+            List<Order> meny_data = db.Orders.ToList();
+            if (searchString)
+            {
+                meny_data = db.Orders.Where(t => t.CourierId == id && t.Date == DateTime.Now).ToList();
+                //courier = db.Couriers.Include(t => t.Orders.Select(x => x.Date == DateTime.Now)).FirstOrDefault(t => t.Id == id);
+            }
+            ViewData["MyList"] = meny_data;
+            //ViewBag.meny_data = meny_data;
 
-            Courier courier = db.Couriers.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);            
-            //Customer customer = db.Customers.Find(id);
+
             if (courier == null)
             {
                 return HttpNotFound();

@@ -8,18 +8,21 @@
 
 <div class="table-wrapper">
     <h2>Личный кабинет</h2>
+    <div>
+        @using (Html.BeginForm("Details", "Couriers", FormMethod.Get))
+        {
+            <p>
+                Заказы на сегодня: @Html.CheckBox("searchString")
+                <input type="submit" value="Фильтровать" style="text-align: center" />
+            </p>
+        }
+        @ViewBag.Error
+
+    </div>
 
     <div>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.User.Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.User.Email)
-            </dd>
-
             <dt>Заказы</dt>
             @if (Model.Orders.Count == 0)
             {
@@ -41,35 +44,35 @@
                     <th></th>
                 </tr>
 
-                @foreach (Order order in Model.Orders)
+                @foreach (Order item in (List<Order>)ViewData["MyList"])
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => order.Sender)
+                            @Html.DisplayFor(modelItem => item.Sender)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => order.Receiver)
+                            @Html.DisplayFor(modelItem => item.Receiver)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => order.Address_Sender)
+                            @Html.DisplayFor(modelItem => item.Address_Sender)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => order.Address_Receiver)
+                            @Html.DisplayFor(modelItem => item.Address_Receiver)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => order.Date)
+                            @Html.DisplayFor(modelItem => item.Date)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => order.Time)
+                            @Html.DisplayFor(modelItem => item.Time)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => order.Status)
+                            @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
-                            @Html.ActionLink("Детали", "Details", "Orders", new { id = order.OrderId }, null)|
-                            @if (order.Print)
+                            @Html.ActionLink("Детали", "Details", "Orders", new { id = item.OrderId }, null)|
+                            @if (item.Print)
                             {
-                                @Html.ActionLink("Печать", "Print", "Orders", new { id = order.OrderId }, null)
+                                @Html.ActionLink("Печать", "Print", "Orders", new { id = item.OrderId }, null)
                             }
                         </td>
 
@@ -82,33 +85,18 @@
     <p>
         @Html.ActionLink("Изменить почту или пароль", "Edit", "Users", new { id = Model.Id }, new { })
     </p>
-</div>
-
-@*<h2>Details</h2>
 
     <div>
-        <h4>Courier</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.User.Email)
-            </dt>
+        @{
+            TempData["FullModel"] = (List<Order>)ViewData["MyList"];
+        }
+        @using (Html.BeginForm("save", "orders", new { order = Model }, FormMethod.Post))
+        {
 
-            <dd>
-                @Html.DisplayFor(model => model.User.Email)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.rating)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.rating)
-            </dd>
-
-        </dl>
+            <p>
+                <input type="submit" value="сохранить отчет" style="text-align: center" />
+            </p>
+        }
+        @ViewBag.error
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Назад", "Index")
-    </p>*@
+</div>

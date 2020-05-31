@@ -28,7 +28,7 @@ namespace UlskDel.Controllers
         private OrderContext db = new OrderContext();
         
         // GET: Orders
-        public ActionResult Index(bool searchString = false, int id = 2)
+        public ActionResult Index(int id = 2)
         {
             var elem = from s in db.Orders
                        select s;
@@ -49,12 +49,6 @@ namespace UlskDel.Controllers
                 case 1: elem = elem.Where(s => s.Date.CompareTo(month)>0
                                             && s.Date.CompareTo(now) < 0); break;
                 case 2: elem = db.Orders;break;
-            }
-
-            if (searchString)
-            {                //фильтрация: цена доставки не указана
-                elem = elem.Where(s => s.Price == 0);
-
             }
 
             return View(elem.ToList());
@@ -108,6 +102,11 @@ namespace UlskDel.Controllers
                 //привязываем курьера к данному заказу
                 order.CourierId = elem.FirstOrDefault().Id;
 
+                //если хрупкое
+                if (order.Fragile)
+                {
+                    order.Price = order.Price + 50;
+                }
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index","LK");
@@ -320,7 +319,7 @@ namespace UlskDel.Controllers
             //    }
             //}
 
-            iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance(GET("https://api.qrserver.com/v1/create-qr-code/?size=150x150", "data=http://192.168.1.8:3000/Orders/Details/2&charset-source=ISO-8859-1"));
+            iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance(GET("https://api.qrserver.com/v1/create-qr-code/?size=150x150&charset-source=ISO-8859-1", "data=http://192.168.1.8:3000/Orders/Details/" + order.OrderId));
             DC.Add(pic);
             DC.Close();
             
