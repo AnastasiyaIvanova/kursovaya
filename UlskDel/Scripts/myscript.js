@@ -134,7 +134,6 @@ function onClick() {
     var width = document.getElementById("Width").value;
     var height = document.getElementById("Height").value;
     var fragile = document.getElementById("fragile");
-    alert(fragile.value);
 
     if (!A.trim() || !B.trim()) {
         alert("Введите адреса");
@@ -142,12 +141,10 @@ function onClick() {
         ymaps.route([A, B]).then(
             function (route) {
                 var distance = route.getHumanLength(); //Получаем расстояние
-
                 var s = distance.replace(' ', ' ');
                 var x = s.toString();
                 var k = x.indexOf("&");
                 x = x.substr(0, k);//расстояние
-                console.log(x);
                 //Получаем объемный вес
                 var v = (length * width * height) / 5000;
                 var price = weight;
@@ -155,22 +152,12 @@ function onClick() {
                     price = v;
                 }
                 price = Math.round(price * 6 + 4 * x);//цена
-                
-                
                 if (fragile.checked) {
                     price = price + 50;
                 }
-                //$("#fragile").change(function () {
-                //    console.log("check");
-                //    if ($(this).is(':checked')) {
-                //        price = price + 50;
-                        
-                //    }
-                //});
-                //$('#price').val(price);
+                $('#price').val(price);
                 price = price + "р. Это примерная стоимость доставки.Окончательная установится после взвешивания груза";
                 $('#message').text(price);
-
                 map.geoObjects.add(route); //Рисуем маршрут на карте
             },
             function (error) {

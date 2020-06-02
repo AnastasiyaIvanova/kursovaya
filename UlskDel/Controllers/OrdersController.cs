@@ -26,7 +26,15 @@ namespace UlskDel.Controllers
     public class OrdersController : Controller
     {
         private OrderContext db = new OrderContext();
-        
+
+        [HttpGet]
+        [AllowAnonymous]
+        public JsonResult CheckAddress(string Address_Sender)
+        {
+            var result = Address_Sender.Contains("Ульяновск");
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Orders
         public ActionResult Index(int id = 2)
         {

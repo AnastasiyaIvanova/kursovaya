@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UlskDel.Models
 {
@@ -11,27 +12,39 @@ namespace UlskDel.Models
         public int OrderId { get; set; }
         [Display(Name = "Отправитель")]
         [MinLength(2)]
+        [Required]
         public string Sender { get; set; }
         [Display(Name = "Получатель")]
+        [MinLength(2)]
+        [Required]
         public string Receiver { get; set; }
         [Display(Name = "Адрес отправителя")]
-        [MinLength(4)]
+        [Required]
+        [Remote("CheckAddress", "Orders", ErrorMessage ="Неверный адрес")]
         public string Address_Sender { get; set; }
         [Display(Name = "Адрес получателя")]
-        [MinLength(4)]
+        [Required]
         public string Address_Receiver { get; set; }
+        [Required]
+        [Display(Name = "Район отправки")]
         public Areas Area_Sender { get; set; }
+        [Required]
+        [Display(Name = "Район получения")]
         public Areas Area_Receiver { get; set; }
+        [Required]
         [RegularExpression(@"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$", ErrorMessage = "Invalid Phone Number.")]
         [Display(Name = "Номер отправителя")]
         public string Phone_Sender { get; set; }
+        [Required]
         [RegularExpression(@"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$", ErrorMessage = "Invalid Phone Number.")]
         [Display(Name = "Номер получателя")]
         public string Phone_Receiver { get; set; }
+        [Required]
         [DataType(DataType.Date)]
         [MyDateTime]
         [Display(Name = "Дата")]
         public System.DateTime Date { get; set; }
+        [Required]
         [DataType(DataType.Time)]
         [Display(Name = "Время")]
         public System.DateTime Time { get; set; }
