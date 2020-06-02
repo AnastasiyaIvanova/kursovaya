@@ -6,38 +6,46 @@
 }
 
 <div class="create-wrapper">
-    <h2>Создать</h2>
+    <h2>Введите данные</h2>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Courier</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Id, "Id", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Id", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    <div class="form-horizontal">
+        <h4>Курьер</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.rating, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.rating, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.rating, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Area, new[] {
+                new SelectListItem() {Text = "Железнодорожный", Value = "Железнодорожный"},
+                new SelectListItem() {Text = "Заволжский", Value = "Заволжский"},
+                new SelectListItem() {Text = "Засвияжский", Value = "Засвияжский"},
+                new SelectListItem() {Text = "Ленинский", Value = "Ленинский"}
+                })
+                @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Создать" class="btn btn-default" />
+        <div class="form-group">
+            @Html.LabelFor(model => model.oversize, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.oversize, new { htmlAttributes = new { @id = "fragile" } })
+                    @Html.ValidationMessageFor(model => model.oversize, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
     }
 
     <div>

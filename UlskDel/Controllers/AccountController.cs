@@ -61,17 +61,23 @@ namespace UlskDel.Controllers
                 if (user == null)
                 {
                     User x = db.Users.Add(new User { Email = model.Name, Password = pwd, RoleId = role });
-                    if (isCourier)
+                    if (!isCourier)
                     {
-                        //return PartialView();
-                        db.Couriers.Add(new Courier { Id = x.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Ленинский });
-                    } else db.Customers.Add(new Customer { Id = x.Id, sumVotes = 0, totalVotes = 0 });
+                        db.Customers.Add(new Customer { Id = x.Id, sumVotes = 0, totalVotes = 0 });
+                    }
                     db.SaveChanges();
                     user = db.Users.Where(u => u.Email == model.Name && u.Password == pwd).FirstOrDefault();
                     if (user != null)
                     {
                         FormsAuthentication.SetAuthCookie(model.Name, true);
-                        return RedirectToAction("Index", "Home");
+                        if (isCourier)
+                        {
+                            return RedirectToAction("Create", "Couriers");
+                        } else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        
                     }
                 }
                 else

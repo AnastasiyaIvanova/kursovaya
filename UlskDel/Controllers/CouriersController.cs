@@ -81,14 +81,19 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ratisumVotes,totalVotesng")] Courier courier)
+        public ActionResult Create([Bind(Include = "Area, oversize")] Courier courier)
         {
             if (ModelState.IsValid)
             {
+                User user = db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
+                int id = user.Id;
+                courier.Id = id;
+                courier.sumVotes = 0;
+                courier.totalVotes = 0;
                 courier.time = DateTime.Now;
                 db.Couriers.Add(courier);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.Id = new SelectList(db.Users, "Id", "Email", courier.Id);
