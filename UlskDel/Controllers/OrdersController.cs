@@ -155,13 +155,14 @@ namespace UlskDel.Controllers
                 }
                 //заказчик
                 Customer customer = db.Customers.FirstOrDefault(a => a.Id == order.CustomerId);
+                //Стоимость в зависимости от рейтинга
                 if (customer.rating > 0 && customer.rating < 2.07)
                 {
-                    order.Price = (int)Math.Round(order.Price * 1.5);
+                    order.Price = (int)Math.Round(order.Price * 1.2);
                 }
                 else if (customer.rating >= 3.1)
                 {
-                    order.Price = (int)Math.Round(order.Price * 1.5);
+                    order.Price = (int)Math.Round(order.Price * 0.8);
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -317,20 +318,6 @@ namespace UlskDel.Controllers
             DC.Add(new Paragraph("Подпись курьера_________________", font));
             DC.SetMargins(100, 10, 100, 10);
 
-
-            //добавление QR-кода
-            //using (var wc = new WebClient())
-            //{
-            //    using (var imgStream = new MemoryStream(wc.DownloadData(GET("https://api.qrserver.com/v1/create-qr-code/?size=150x150", "data=http://192.168.1.8:3000/Orders/Details/2&charset-source=ISO-8859-1"))))
-            //    {
-            //        using (var image = System.Drawing.Image.FromStream(imgStream))
-            //        {
-            //            iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance(image, System.Drawing.Imaging.ImageFormat.Jpeg);
-            //            DC.Add(pic);
-            //        }
-            //    }
-            //}
-
             iTextSharp.text.Image pic = iTextSharp.text.Image.GetInstance(GET("https://api.qrserver.com/v1/create-qr-code/?size=150x150&charset-source=ISO-8859-1", "data=http://192.168.1.8:3000/Orders/Details/" + order.OrderId));
             DC.Add(pic);
             DC.Close();
@@ -342,12 +329,6 @@ namespace UlskDel.Controllers
         private static byte[] GET(string Url, string Data)
         {
             WebRequest req = WebRequest.Create(Url + "&" + Data);
-            //WebResponse resp = req.GetResponse();
-            //Stream stream = resp.GetResponseStream();
-            //StreamReader sr = new StreamReader(stream);
-            //string Out = sr.ReadToEnd();
-            //sr.Close();
-            //return Out;
             byte[] bytes;
             using (HttpWebResponse res = (HttpWebResponse)req.GetResponse())
             using (Stream responseStream = res.GetResponseStream())
@@ -367,7 +348,6 @@ namespace UlskDel.Controllers
             string file = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/newdoc.xls";
             Workbook workbook = new Workbook();
             Worksheet worksheet = new Worksheet("Отчет");
-            //List<Order> model = db.Orders.ToList();
             worksheet.Cells[0, 0] = new Cell("Отправитель");
             worksheet.Cells[0, 1] = new Cell("Получатель");
             worksheet.Cells[0, 2] = new Cell("Адрес отправителя");

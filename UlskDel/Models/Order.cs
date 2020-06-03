@@ -66,7 +66,7 @@ namespace UlskDel.Models
         [Range(0, 200)]
         [Required]
         public float Height { get; set; }
-        [Display(Name = "Не габаритный")]
+        [Display(Name = "Негабаритный")]
         public bool Big { get; set; }
         [Display(Name = "Хрупкое")]
         public bool Fragile { get; set; }

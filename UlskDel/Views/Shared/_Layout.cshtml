@@ -19,12 +19,12 @@
                 <li>@Html.ActionLink("Расчет стоимости доставки", "Count", "Home")</li>
                 @if (User.IsInRole("courier"))
                 {
-                    <li>@Html.ActionLink("Заказы", "Index", "Orders")</li>
+
                 }
                 @if (User.IsInRole("admin"))
                 {
                     <li>@Html.ActionLink("Пользователи", "Index", "Users")</li>
-                    <li>@Html.ActionLink("Автомобили", "Index", "Cars")</li>
+                    <li>@Html.ActionLink("Заказы", "Index", "Orders")</li>
                 }
 
             </ul>

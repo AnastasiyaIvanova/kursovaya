@@ -134,9 +134,25 @@ namespace UlskDel.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
+            DeleteRole(user);
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        private void DeleteRole(User user)
+        {
+            switch (user.RoleId)
+            {
+                case 1:
+                    Customer customer = db.Customers.Find(user.Id);
+                    db.Customers.Remove(customer);
+                    break;
+                case 3:
+                    Courier courier = db.Couriers.Find(user.Id);
+                    db.Couriers.Remove(courier);
+                    break;
+            }
         }
 
         protected override void Dispose(bool disposing)
