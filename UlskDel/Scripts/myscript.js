@@ -27,7 +27,6 @@ function init() {
         ymaps.geocode(request).then(function (res) {
             var obj = res.geoObjects.get(0),
                 error, hint;
-            console.log(obj);
             if (obj) {
                 // Об оценке точности ответа геокодера можно прочитать тут: https://tech.yandex.ru/maps/doc/geocoder/desc/reference/precision-docpage/
                 switch (obj.properties.get('metaDataProperty.GeocoderMetaData.precision')) {
@@ -124,6 +123,54 @@ function init() {
         $('#messageHeader').text('Данные:');
         $('#message').text(message);
     }
+
+    suggestView1.events.add('select', function (event) {
+        var selected = event.get('item').value;
+        ymaps.geocode(selected, {
+            results: 1
+        }).then(function (res) {
+            return ymaps.geocode(res.geoObjects.get(0).geometry.getCoordinates(), {
+                kind: 'district',
+                results: 10
+            }).then(function (res) {
+                var founded = res['metaData']['geocoder']['found'];
+                $('label.suggest .description').html("");
+                for (i = 0; i <= founded - 1; i++) {
+                    var info = res.geoObjects.get(i).properties.getAll();
+                    var name = info['name'];
+                    if (name.search('район') != -1) {
+                        name = name.replace(' район', '');
+                        $('#area-sender').val(name);
+                        console.log(name);
+                    }
+                }
+            });
+        });
+    });
+
+    suggestView2.events.add('select', function (event) {
+        var selected = event.get('item').value;
+        ymaps.geocode(selected, {
+            results: 1
+        }).then(function (res) {
+            return ymaps.geocode(res.geoObjects.get(0).geometry.getCoordinates(), {
+                kind: 'district',
+                results: 10
+            }).then(function (res) {
+                var founded = res['metaData']['geocoder']['found'];
+                $('label.suggest .description').html("");
+                for (i = 0; i <= founded - 1; i++) {
+                    var info = res.geoObjects.get(i).properties.getAll();
+                    var name = info['name'];
+                    if (name.search('район') != -1) {
+                        name = name.replace(' район', '');
+                        $('#area-receiver').val(name);
+                        console.log(name);
+                    }
+                }
+            });
+        });
+    });
 }
 
 function onClick() {

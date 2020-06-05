@@ -108,7 +108,8 @@ namespace UlskDel.Controllers
                     elem = elem.Where(x => x.Area == order.Area_Sender);
                 }
                 //привязываем курьера к данному заказу
-                order.CourierId = elem.FirstOrDefault().Id;
+                if (elem.Count() == 1)
+                    order.CourierId = elem.FirstOrDefault().Id;
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index","LK");

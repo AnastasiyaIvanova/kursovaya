@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -78,7 +79,8 @@ namespace UlskDel.Models
         public bool Print { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
-        public int CourierId { get; set; }
+        public int? CourierId { get; set; }
+        [ForeignKey("CourierId")]
         public Courier Courier { get; set; }
         
     }

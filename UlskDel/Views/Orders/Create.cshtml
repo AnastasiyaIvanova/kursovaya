@@ -43,12 +43,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Area_Sender, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Area_Sender, new[] {
-                    new SelectListItem() {Text = "Железнодорожный", Value = "Железнодорожный"},
-                    new SelectListItem() {Text = "Заволжский", Value = "Заволжский"},
-                    new SelectListItem() {Text = "Засвияжский", Value = "Засвияжский"},
-                    new SelectListItem() {Text = "Ленинский", Value = "Ленинский"}
-                    })
+                    @Html.EditorFor(model => model.Area_Sender, new { htmlAttributes = new { @class = "form-control", @id = "area-sender", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.Area_Sender, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -65,12 +60,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Area_Receiver, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Area_Receiver, new[] {
-                    new SelectListItem() {Text = "Железнодорожный", Value = "Железнодорожный"},
-                    new SelectListItem() {Text = "Заволжский", Value = "Заволжский"},
-                    new SelectListItem() {Text = "Засвияжский", Value = "Засвияжский"},
-                    new SelectListItem() {Text = "Ленинский", Value = "Ленинский"}
-                    })
+                    @Html.EditorFor(model => model.Area_Receiver, new { htmlAttributes = new { @class = "form-control", @id = "area-receiver", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.Area_Receiver, "", new { @class = "text-danger" })
                 </div>
             </div>
