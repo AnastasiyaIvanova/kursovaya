@@ -130,6 +130,10 @@ namespace UlskDel.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable < SelectListItem > userTypeList = new SelectList(db.Couriers.ToList(), "Id", "Name");
+            ViewData["userTypeList"] = userTypeList;
+            //SelectList couriers = new SelectList(db.Couriers, "Id", "Name", order.CourierId);
+            //ViewBag.couriers = couriers;
             return View(order);
         }
 
@@ -140,6 +144,11 @@ namespace UlskDel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderId,Sender,Receiver,Address_Sender,Address_Receiver,Phone_Sender,Phone_Receiver,Date,Time,Status,Weight,Length,Width,Height,Who_pay,Price,CustomerId,CourierId")] Order order)
         {
+            IEnumerable<SelectListItem> userTypeList = new SelectList(db.Couriers.ToList(), "Id", "Name");
+            if (!ModelState.IsValid)
+            {
+                Console.WriteLine(order.CourierId);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(order).State = EntityState.Modified;
@@ -388,6 +397,50 @@ namespace UlskDel.Controllers
             workbook.Worksheets.Add(worksheet);
             workbook.Save(file);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Distribute(int id = 4)
+        {
+            var elem = from s in db.Orders
+                       select s;
+
+            var cour = from s in db.Couriers
+                       select s;
+
+            List<SelectListItem> item = new List<SelectListItem>();
+            //фильтрация по районам
+            item.Add(new SelectListItem { Text = "Ленинский", Value = "0" });
+            item.Add(new SelectListItem { Text = "Засвияжский", Value = "1" });
+            item.Add(new SelectListItem { Text = "Заволжский", Value = "2" });
+            item.Add(new SelectListItem { Text = "Железнодорожный", Value = "3" });
+            item.Add(new SelectListItem { Text = "все", Value = "4", Selected = true });
+            DateTime week = DateTime.Now.AddDays(-7);
+            DateTime month = DateTime.Now.AddMonths(-1);
+            DateTime now = DateTime.Now;
+            ViewBag.id = item;
+            switch (id)
+            {
+                case 0:
+                    elem = elem.Where(s => s.Area_Sender == Areas.Ленинский);
+                    cour = cour.Where(x => x.Area == Areas.Ленинский);
+                    break;
+                case 1:
+                    elem = elem.Where(s => s.Area_Sender == Areas.Засвияжский);
+                    cour = cour.Where(x => x.Area == Areas.Засвияжский);
+                    break;
+                case 2:
+                    elem = elem.Where(s => s.Area_Sender == Areas.Заволжский);
+                    cour = cour.Where(x => x.Area == Areas.Заволжский);
+                    break;
+                case 3:
+                    elem = elem.Where(s => s.Area_Sender == Areas.Железнодорожный);
+                    cour = cour.Where(x => x.Area == Areas.Железнодорожный);
+                    break;
+                case 4: elem = db.Orders; break;
+            }
+            ViewData["MyList"] = cour.ToList();
+            elem = elem.Where(x => x.CourierId == null);
+            return View(elem.ToList());
         }
 
         protected override void Dispose(bool disposing)

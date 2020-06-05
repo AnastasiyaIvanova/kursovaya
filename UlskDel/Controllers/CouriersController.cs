@@ -81,7 +81,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Area, oversize")] Courier courier)
+        public ActionResult Create([Bind(Include = "Area, oversize, Name")] Courier courier)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace UlskDel.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,sumVotes,totalVotes,time,Area")] Courier courier)
+        public ActionResult Edit([Bind(Include = "Id,sumVotes,totalVotes,time,Area,Name")] Courier courier)
         {
             if (ModelState.IsValid)
             {

@@ -235,6 +235,7 @@
     <Content Include="Views\Couriers\Index.cshtml" />
     <Content Include="Views\Customers\Rate.cshtml" />
     <Content Include="Views\Couriers\Rate.cshtml" />
+    <Content Include="Views\Orders\Distribute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

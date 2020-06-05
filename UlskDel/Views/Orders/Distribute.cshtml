@@ -1,24 +1,13 @@
 ﻿@model IEnumerable<UlskDel.Models.Order>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Distribute";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="table-wrapper">
-    <h2>Заказы</h2>
+    <h2>Распределение</h2>
+
     <div>
         @using (Html.BeginForm("Distribute", "Orders", FormMethod.Get))
-        {
-            <p>
-                <input type="submit" value="Распределить заказы" style="text-align: center" />
-            </p>
-        }
-        @ViewBag.Error
-
-    </div>
-    <div>
-        @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
         {
             <p>
                 Фильтрация: @Html.DropDownList("id")
@@ -81,27 +70,12 @@
                 <td>
                     @if (item.Status != "отправлен")
                     {
-                        @Html.ActionLink("Редактировать", "Edit", new { id = item.OrderId });
-                    } |
-                    @Html.ActionLink("Детали", "Details", new { id = item.OrderId }) |
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.OrderId })
+                        @Html.ActionLink("Назначить курьера", "Edit", new { id = item.OrderId });
+                    }
                 </td>
             </tr>
         }
 
     </table>
-
-    <div>
-        @{
-            TempData["FullModel"] = Model.ToList();
-        }
-        @using (Html.BeginForm("save", "orders", new { order = Model }, FormMethod.Post))
-        {
-
-            <p>
-                <input type="submit" value="сохранить отчет" style="text-align: center" />
-            </p>
-        }
-        @ViewBag.error
-    </div>
 </div>
+

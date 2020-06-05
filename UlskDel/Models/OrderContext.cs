@@ -87,6 +87,7 @@ namespace UlskDel.Models
         [ForeignKey("User")]
         public int Id { get; set; }
         public User User { get; set; }
+        public string Name { get; set; }
         public int sumVotes { get; set; }
         public int totalVotes { get; set; }
         [Display(Name = "Рейтинг")]

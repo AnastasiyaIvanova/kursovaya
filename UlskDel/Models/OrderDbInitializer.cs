@@ -83,11 +83,11 @@ namespace UlskDel.Models
 
             var cour = new List<Courier>
             {
-                new Courier {Id = cour1.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Ленинский },
-                new Courier {Id = cour2.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Железнодорожный },
-                new Courier {Id = cour3.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Заволжский },
-                new Courier {Id = cour4.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Засвияжский },
-                new Courier {Id = cour5.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Засвияжский, oversize = true }
+                new Courier {Id = cour1.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Ленинский, Name = "Первый" },
+                new Courier {Id = cour2.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Железнодорожный, Name = "Второй" },
+                new Courier {Id = cour3.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Заволжский, Name = "Третий" },
+                new Courier {Id = cour4.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Засвияжский, Name = "Четвертый" },
+                new Courier {Id = cour5.Id, sumVotes = 0, totalVotes = 0, time = DateTime.Now, Area = Areas.Засвияжский, oversize = true, Name = "Пятый" }
             };
             cour.ForEach(s => db.Couriers.Add(s));
             db.SaveChanges();
