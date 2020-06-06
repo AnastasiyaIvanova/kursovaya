@@ -527,6 +527,38 @@
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
+        <attribute id="c797c88fcf9bec018e3939de75105935d" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="true" notNull="true" comment="">
+          <logical name="Идентификатор заказчика" />
+          <physical>
+            <item>
+              <string>Access</string>
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор заказчика" />
+            </item>
+          </physical>
+          <geometry>
+            <position x="3" y="26" />
+            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
+            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
+            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
+            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
+          </geometry>
+        </attribute>
+        <attribute id="c0105dd1e5e581fa2d0c61947f9b17ff7" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="true" notNull="false" comment="">
+          <logical name="Идентификатор курьера" />
+          <physical>
+            <item>
+              <string>Access</string>
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор курьера" />
+            </item>
+          </physical>
+          <geometry>
+            <position x="3" y="43" />
+            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
+            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
+            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
+            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
+          </geometry>
+        </attribute>
         <attribute id="317843737fb0937c57e81d194ad456744" domain="ac6a5acbcc7a0f3a3640c2f88190fc48e" isPrimary="false" isForeign="false" notNull="false" comment="">
           <logical name="Отправитель" />
           <physical>
@@ -536,7 +568,7 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="26" />
+            <position x="3" y="60" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -552,7 +584,7 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="43" />
+            <position x="3" y="77" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -568,7 +600,7 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="60" />
+            <position x="3" y="94" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -584,7 +616,7 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="77" />
+            <position x="3" y="111" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -600,7 +632,7 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="94" />
+            <position x="0" y="0" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -616,7 +648,7 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="111" />
+            <position x="0" y="0" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -767,38 +799,6 @@
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
-        <attribute id="cf6bf0857e4e21e4317f6523224c5e1fd" domain="0043103ef0717cd69535861a7fe916364" isPrimary="false" isForeign="false" notNull="false" comment="">
-          <logical name="Негабаритный" />
-          <physical>
-            <item>
-              <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Негабаритный" />
-            </item>
-          </physical>
-          <geometry>
-            <position x="3" y="281" />
-            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-          </geometry>
-        </attribute>
-        <attribute id="c091a2def63e04e07442de7c29dbb09d5" domain="0043103ef0717cd69535861a7fe916364" isPrimary="false" isForeign="false" notNull="false" comment="">
-          <logical name="Хрупкое" />
-          <physical>
-            <item>
-              <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Хрупкое" />
-            </item>
-          </physical>
-          <geometry>
-            <position x="3" y="298" />
-            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-          </geometry>
-        </attribute>
         <attribute id="c4538ee1eaacae8402301b4fbb0fcf4e4" domain="0043103ef0717cd69535861a7fe916364" isPrimary="false" isForeign="false" notNull="false" comment="">
           <logical name="Оплата отправителем" />
           <physical>
@@ -808,7 +808,7 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="315" />
+            <position x="3" y="281" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -824,55 +824,39 @@
             </item>
           </physical>
           <geometry>
-            <position x="3" y="332" />
+            <position x="3" y="298" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
-        <attribute id="150538fa16ff51d6ce9ccfe9ce1422ec6" domain="0043103ef0717cd69535861a7fe916364" isPrimary="false" isForeign="false" notNull="false" comment="">
-          <logical name="Доступность печати" />
+        <attribute id="cf6bf0857e4e21e4317f6523224c5e1fd" domain="0043103ef0717cd69535861a7fe916364" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="Негабаритный" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Доступность печати" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Негабаритный" />
             </item>
           </physical>
           <geometry>
-            <position x="3" y="349" />
+            <position x="0" y="0" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
-        <attribute id="c797c88fcf9bec018e3939de75105935d" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="true" notNull="true" comment="">
-          <logical name="Идентификатор заказчика" />
+        <attribute id="c091a2def63e04e07442de7c29dbb09d5" domain="0043103ef0717cd69535861a7fe916364" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="Хрупкое" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор заказчика" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Хрупкое" />
             </item>
           </physical>
           <geometry>
-            <position x="3" y="366" />
-            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-          </geometry>
-        </attribute>
-        <attribute id="c0105dd1e5e581fa2d0c61947f9b17ff7" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="true" notNull="false" comment="">
-          <logical name="Идентификатор курьера" />
-          <physical>
-            <item>
-              <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор курьера" />
-            </item>
-          </physical>
-          <geometry>
-            <position x="3" y="383" />
+            <position x="0" y="0" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -881,7 +865,7 @@
         </attribute>
       </attributes>
       <geometry>
-        <position x="376" y="344" />
+        <position x="440" y="464" />
         <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
         <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
         <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
@@ -1105,11 +1089,12 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="976" y="336" />
-          <nodes x="968" y="336" />
-          <nodes x="968" y="394" />
-          <nodes x="968" y="544" />
-          <nodes x="648" y="544" />
-          <nodes x="512" y="544" />
+          <nodes x="976" y="352" />
+          <nodes x="816" y="352" />
+          <nodes x="768" y="352" />
+          <nodes x="768" y="616" />
+          <nodes x="667" y="616" />
+          <nodes x="552" y="616" />
         </nodes>
       </geometry>
     </relationship>
@@ -1131,10 +1116,13 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="192" y="224" />
-          <nodes x="192" y="263" />
-          <nodes x="192" y="544" />
-          <nodes x="376" y="544" />
-          <nodes x="512" y="544" />
+          <nodes x="357" y="224" />
+          <nodes x="408" y="224" />
+          <nodes x="408" y="520" />
+          <nodes x="432" y="520" />
+          <nodes x="432" y="616" />
+          <nodes x="440" y="616" />
+          <nodes x="552" y="616" />
         </nodes>
       </geometry>
     </relationship>

@@ -884,9 +884,8 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="504" y="128" />
-          <nodes x="504" y="168" />
-          <nodes x="504" y="176" />
-          <nodes x="488" y="176" />
+          <nodes x="488" y="128" />
+          <nodes x="488" y="168" />
           <nodes x="488" y="192" />
           <nodes x="488" y="200" />
         </nodes>
@@ -970,8 +969,9 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="488" y="200" />
-          <nodes x="488" y="219" />
-          <nodes x="488" y="232" />
+          <nodes x="480" y="200" />
+          <nodes x="480" y="219" />
+          <nodes x="480" y="232" />
           <nodes x="400" y="232" />
           <nodes x="400" y="312" />
           <nodes x="292" y="312" />
@@ -1022,8 +1022,9 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="488" y="200" />
-          <nodes x="488" y="219" />
-          <nodes x="488" y="232" />
+          <nodes x="496" y="200" />
+          <nodes x="496" y="219" />
+          <nodes x="496" y="232" />
           <nodes x="680" y="232" />
           <nodes x="680" y="328" />
           <nodes x="728" y="328" />
@@ -1056,7 +1057,7 @@
         </nodes>
       </geometry>
     </relationship>
-    <relationship id="1400779fb5a3e5b5cf6b7458b663570d5" verbPhraseParentToChild="имеет" verbPhraseChildToParent="есть" parentEntity="183aa6062ed3e3b305d1a3d5eb61ed9ea" childEntity="f330923f44d15ea8b2ccbea4473a1b31b" cardinality="OneToZeroOneMore" cardinalityValue="2" isIdentifying="false" allowNulls="false" comment="">
+    <relationship id="1400779fb5a3e5b5cf6b7458b663570d5" verbPhraseParentToChild="доставляет" verbPhraseChildToParent="доставляется" parentEntity="183aa6062ed3e3b305d1a3d5eb61ed9ea" childEntity="f330923f44d15ea8b2ccbea4473a1b31b" cardinality="OneToZeroOneMore" cardinalityValue="2" isIdentifying="false" allowNulls="false" comment="">
       <logical name="" />
       <physical />
       <pkFkList>
@@ -1074,8 +1075,9 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="800" y="328" />
-          <nodes x="800" y="368" />
-          <nodes x="800" y="408" />
+          <nodes x="784" y="328" />
+          <nodes x="784" y="368" />
+          <nodes x="784" y="408" />
           <nodes x="752" y="408" />
           <nodes x="752" y="616" />
           <nodes x="691" y="616" />
@@ -1083,7 +1085,7 @@
         </nodes>
       </geometry>
     </relationship>
-    <relationship id="95b6a9aa51efc4fb995ac01370e926271" verbPhraseParentToChild="имеет" verbPhraseChildToParent="есть" parentEntity="372b4dee3f52ecdf127cb98a200482945" childEntity="f330923f44d15ea8b2ccbea4473a1b31b" cardinality="OneToZeroOneMore" cardinalityValue="2" isIdentifying="false" allowNulls="false" comment="">
+    <relationship id="95b6a9aa51efc4fb995ac01370e926271" verbPhraseParentToChild="заказывает" verbPhraseChildToParent="заказывается" parentEntity="372b4dee3f52ecdf127cb98a200482945" childEntity="f330923f44d15ea8b2ccbea4473a1b31b" cardinality="OneToZeroOneMore" cardinalityValue="2" isIdentifying="false" allowNulls="false" comment="">
       <logical name="" />
       <physical />
       <pkFkList>
@@ -1101,9 +1103,10 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="216" y="312" />
-          <nodes x="292" y="312" />
-          <nodes x="408" y="312" />
-          <nodes x="408" y="616" />
+          <nodes x="216" y="336" />
+          <nodes x="292" y="336" />
+          <nodes x="400" y="336" />
+          <nodes x="400" y="616" />
           <nodes x="464" y="616" />
           <nodes x="576" y="616" />
         </nodes>
@@ -1111,8 +1114,8 @@
     </relationship>
   </relationships>
   <discriminators>
-    <discriminator id="1c1b7d4a634aa2d9b5c2cddb8583d9cce" parentEntity="940d0520a26b621c3bf9f8652db7efb84" discriminatorEntity="9476dada0ec186c28384c24f62151dd68" parentRelationship="b0d53daf7be090fc056472608fa979315" categorizingAtribute="" categoryHierarhy="Exclusive" comment="">
-      <logical name="" />
+    <discriminator id="1c1b7d4a634aa2d9b5c2cddb8583d9cce" parentEntity="940d0520a26b621c3bf9f8652db7efb84" discriminatorEntity="9476dada0ec186c28384c24f62151dd68" parentRelationship="b0d53daf7be090fc056472608fa979315" categorizingAtribute="f1389e7f27808793f7d37c802ecf897be" categoryHierarhy="Exclusive" comment="RoleId">
+      <logical name="Id" />
       <physical />
       <childPartDiscriminatorList>
         <ChildPartDiscriminator>

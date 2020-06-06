@@ -105,20 +105,20 @@
   </domains>
   <entities>
     <entity id="940d0520a26b621c3bf9f8652db7efb84" comment="">
-      <logical name="Users" />
+      <logical name="Пользователи" />
       <physical>
         <item>
           <string>Access</string>
-          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Users" />
+          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Пользователи" />
         </item>
       </physical>
       <attributes>
         <attribute id="f1389e7f27808793f7d37c802ecf897be" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="false" notNull="true" comment="">
-          <logical name="Id" />
+          <logical name="Идентификатор пользователя" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор пользователя" />
             </item>
           </physical>
           <geometry>
@@ -130,11 +130,11 @@
           </geometry>
         </attribute>
         <attribute id="17e3014afac0750f7763cdbae2bb0892c" domain="ac6a5acbcc7a0f3a3640c2f88190fc48e" isPrimary="false" isForeign="false" notNull="true" comment="">
-          <logical name="Email" />
+          <logical name="Почта" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Email" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Почта" />
             </item>
           </physical>
           <geometry>
@@ -146,11 +146,11 @@
           </geometry>
         </attribute>
         <attribute id="6368220d768a2344ece51a4b44d589609" domain="ac6a5acbcc7a0f3a3640c2f88190fc48e" isPrimary="false" isForeign="false" notNull="true" comment="">
-          <logical name="Password" />
+          <logical name="Пароль" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Password" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Пароль" />
             </item>
           </physical>
           <geometry>
@@ -162,11 +162,11 @@
           </geometry>
         </attribute>
         <attribute id="379c7566a675ce25224d03eacb6d5ad94" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="true" notNull="true" comment="">
-          <logical name="RoleId" />
+          <logical name="Идентификатор роли" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="RoleId" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор роли" />
             </item>
           </physical>
           <geometry>
@@ -179,7 +179,7 @@
         </attribute>
       </attributes>
       <geometry>
-        <position x="424" y="88" />
+        <position x="344" y="32" />
         <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
         <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
         <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
@@ -187,20 +187,20 @@
       </geometry>
     </entity>
     <entity id="0e11a76a0b4d848de27a5c853f17fa087" comment="">
-      <logical name="Roles" />
+      <logical name="Роли" />
       <physical>
         <item>
           <string>Access</string>
-          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Roles" />
+          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Роли" />
         </item>
       </physical>
       <attributes>
         <attribute id="5d4bf96c44f9d2d127ee127a716046574" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="false" notNull="true" comment="">
-          <logical name="Id" />
+          <logical name="Идентификатор роли" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор роли" />
             </item>
           </physical>
           <geometry>
@@ -212,11 +212,11 @@
           </geometry>
         </attribute>
         <attribute id="e7c64f339b2fd48a8284c5cfca325da50" domain="2517471996b9193b8a104f911bf19fbdb" isPrimary="false" isForeign="false" notNull="true" comment="">
-          <logical name="Name" />
+          <logical name="Название" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Name" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Название" />
             </item>
           </physical>
           <geometry>
@@ -229,7 +229,7 @@
         </attribute>
       </attributes>
       <geometry>
-        <position x="712" y="112" />
+        <position x="888" y="160" />
         <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
         <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
         <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
@@ -237,20 +237,20 @@
       </geometry>
     </entity>
     <entity id="c676bc90b649ee33b84957c769688283c" comment="">
-      <logical name="Admins" />
+      <logical name="Администраторы" />
       <physical>
         <item>
           <string>Access</string>
-          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Admins" />
+          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Администраторы" />
         </item>
       </physical>
       <attributes>
         <attribute id="594b8ea769e3fbfd9b2404f7e5f707880" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
-          <logical name="User_Id" />
+          <logical name="Идентификатор пользователя" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="User_Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор пользователя" />
             </item>
           </physical>
           <geometry>
@@ -263,7 +263,7 @@
         </attribute>
       </attributes>
       <geometry>
-        <position x="464" y="296" />
+        <position x="424" y="272" />
         <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
         <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
         <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
@@ -271,20 +271,20 @@
       </geometry>
     </entity>
     <entity id="372b4dee3f52ecdf127cb98a200482945" comment="">
-      <logical name="Customers" />
+      <logical name="Заказчики" />
       <physical>
         <item>
           <string>Access</string>
-          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Customers" />
+          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Заказчики" />
         </item>
       </physical>
       <attributes>
         <attribute id="c8b3f893d75341b3d8dd65d6a7f574d2f" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="true" comment="">
-          <logical name="sumVotes" />
+          <logical name="Сумма голосов" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="sumVotes" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Сумма голосов" />
             </item>
           </physical>
           <geometry>
@@ -296,11 +296,11 @@
           </geometry>
         </attribute>
         <attribute id="0e7f8d705b2b57b4305bd3fde06de9cf2" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
-          <logical name="Id" />
+          <logical name="Идентификатор пользователя" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор пользователя" />
             </item>
           </physical>
           <geometry>
@@ -311,12 +311,12 @@
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
-        <attribute id="55c5b5ceed98772a9b7726af30d35c968" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="false" comment="">
-          <logical name="totalVotes" />
+        <attribute id="1ac5b28b27a4686f712781635e1ca9547" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="Количество голосов" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="totalVotes" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Количество голосов" />
             </item>
           </physical>
           <geometry>
@@ -329,7 +329,7 @@
         </attribute>
       </attributes>
       <geometry>
-        <position x="144" y="288" />
+        <position x="32" y="200" />
         <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
         <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
         <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
@@ -362,11 +362,11 @@
           </geometry>
         </attribute>
         <attribute id="6e66594501ef90f638c1878cd72429f0a" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
-          <logical name="Id" />
+          <logical name="Идентификатор пользователя" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор пользователя" />
             </item>
           </physical>
           <geometry>
@@ -411,7 +411,7 @@
         </attribute>
       </attributes>
       <geometry>
-        <position x="728" y="288" />
+        <position x="816" y="280" />
         <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
         <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
         <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
@@ -428,11 +428,11 @@
       </physical>
       <attributes>
         <attribute id="9c5ec55e5466ec129077219add3217d8c" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
-          <logical name="Id" />
+          <logical name="Идентификатор пользователя" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Идентификатор пользователя" />
             </item>
           </physical>
           <geometry>
@@ -751,89 +751,7 @@
         </attribute>
       </attributes>
       <geometry>
-        <position x="464" y="464" />
-        <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
-        <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
-        <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
-        <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-      </geometry>
-    </entity>
-    <entity id="f04c0021a21085ac20171fcd0d85445cf" comment="">
-      <logical name="Cars" />
-      <physical>
-        <item>
-          <string>Access</string>
-          <GenericPhysicalEntity xsi:type="PhysicalAccessEntity" name="Cars" />
-        </item>
-      </physical>
-      <attributes>
-        <attribute id="53e5e896ffacb3e5e9b1d498e3062060d" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
-          <logical name="Id" />
-          <physical>
-            <item>
-              <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
-            </item>
-          </physical>
-          <geometry>
-            <position x="3" y="3" />
-            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-          </geometry>
-        </attribute>
-        <attribute id="d253ba4e375e556f63ef891b8e7135cb4" domain="ac6a5acbcc7a0f3a3640c2f88190fc48e" isPrimary="false" isForeign="false" notNull="false" comment="">
-          <logical name="name" />
-          <physical>
-            <item>
-              <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="name" />
-            </item>
-          </physical>
-          <geometry>
-            <position x="3" y="26" />
-            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-          </geometry>
-        </attribute>
-        <attribute id="6be5af176fb51c0107141940aac33aeb9" domain="865a2fa5f849eca1796ccc88dacb78c4b" isPrimary="false" isForeign="false" notNull="false" comment="">
-          <logical name="volume" />
-          <physical>
-            <item>
-              <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="volume" />
-            </item>
-          </physical>
-          <geometry>
-            <position x="3" y="43" />
-            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-          </geometry>
-        </attribute>
-        <attribute id="9ea89c4c82a55717f2da62d7dbf2e4b00" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="false" comment="">
-          <logical name="speed" />
-          <physical>
-            <item>
-              <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="speed" />
-            </item>
-          </physical>
-          <geometry>
-            <position x="3" y="60" />
-            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
-          </geometry>
-        </attribute>
-      </attributes>
-      <geometry>
-        <position x="816" y="448" />
+        <position x="440" y="464" />
         <font name="Tahoma" size="10" bold="true" italic="false" underline="false" />
         <foreColor a="255" r="0" g="0" b="128" isEmpty="false" />
         <backColor a="255" r="207" g="207" b="231" isEmpty="false" />
@@ -859,10 +777,14 @@
         <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
-          <nodes x="784" y="128" />
-          <nodes x="712" y="128" />
-          <nodes x="594" y="128" />
-          <nodes x="504" y="128" />
+          <nodes x="1000" y="176" />
+          <nodes x="888" y="176" />
+          <nodes x="848" y="176" />
+          <nodes x="848" y="128" />
+          <nodes x="752" y="128" />
+          <nodes x="752" y="72" />
+          <nodes x="639" y="72" />
+          <nodes x="488" y="72" />
         </nodes>
       </geometry>
     </relationship>
@@ -883,9 +805,8 @@
         <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
-          <nodes x="504" y="128" />
-          <nodes x="488" y="128" />
-          <nodes x="488" y="168" />
+          <nodes x="488" y="72" />
+          <nodes x="488" y="112" />
           <nodes x="488" y="192" />
           <nodes x="488" y="200" />
         </nodes>
@@ -926,11 +847,11 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="488" y="200" />
-          <nodes x="488" y="200" />
           <nodes x="488" y="219" />
-          <nodes x="488" y="276" />
-          <nodes x="488" y="312" />
-          <nodes x="552" y="312" />
+          <nodes x="488" y="248" />
+          <nodes x="424" y="248" />
+          <nodes x="424" y="288" />
+          <nodes x="584" y="288" />
         </nodes>
       </geometry>
     </relationship>
@@ -960,6 +881,14 @@
           <string>ChildUpdate</string>
           <ERRIAction>Restrict</ERRIAction>
         </item>
+        <item>
+          <string>ChildDelete</string>
+          <ERRIAction>NoAction</ERRIAction>
+        </item>
+        <item>
+          <string>ParentInsert</string>
+          <ERRIAction>NoAction</ERRIAction>
+        </item>
       </riActions>
       <geometry>
         <position x="0" y="0" />
@@ -969,13 +898,10 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="488" y="200" />
-          <nodes x="480" y="200" />
-          <nodes x="480" y="219" />
-          <nodes x="480" y="232" />
-          <nodes x="400" y="232" />
-          <nodes x="400" y="312" />
-          <nodes x="292" y="312" />
-          <nodes x="216" y="312" />
+          <nodes x="488" y="219" />
+          <nodes x="488" y="224" />
+          <nodes x="357" y="224" />
+          <nodes x="192" y="224" />
         </nodes>
       </geometry>
     </relationship>
@@ -1022,38 +948,14 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="488" y="200" />
-          <nodes x="496" y="200" />
-          <nodes x="496" y="219" />
-          <nodes x="496" y="232" />
-          <nodes x="680" y="232" />
-          <nodes x="680" y="328" />
-          <nodes x="728" y="328" />
-          <nodes x="800" y="328" />
-        </nodes>
-      </geometry>
-    </relationship>
-    <relationship id="0195b6fd83382cd9204f079b1b0dc2266" verbPhraseParentToChild="имеет" verbPhraseChildToParent="есть" parentEntity="183aa6062ed3e3b305d1a3d5eb61ed9ea" childEntity="f04c0021a21085ac20171fcd0d85445cf" cardinality="OneToZeroOne" cardinalityValue="2" isIdentifying="true" allowNulls="false" comment="">
-      <logical name="" />
-      <physical />
-      <pkFkList>
-        <pkFk>
-          <IDPKParentEntity>6e66594501ef90f638c1878cd72429f0a</IDPKParentEntity>
-          <IDFKChildEntity>53e5e896ffacb3e5e9b1d498e3062060d</IDFKChildEntity>
-        </pkFk>
-      </pkFkList>
-      <riActions />
-      <geometry>
-        <position x="0" y="0" />
-        <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
-        <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
-        <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
-        <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
-        <nodes>
-          <nodes x="800" y="328" />
-          <nodes x="800" y="368" />
-          <nodes x="800" y="488" />
-          <nodes x="816" y="488" />
-          <nodes x="888" y="488" />
+          <nodes x="488" y="219" />
+          <nodes x="488" y="232" />
+          <nodes x="760" y="232" />
+          <nodes x="760" y="256" />
+          <nodes x="800" y="256" />
+          <nodes x="800" y="320" />
+          <nodes x="816" y="320" />
+          <nodes x="976" y="320" />
         </nodes>
       </geometry>
     </relationship>
@@ -1074,14 +976,12 @@
         <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
-          <nodes x="800" y="328" />
-          <nodes x="784" y="328" />
-          <nodes x="784" y="368" />
-          <nodes x="784" y="408" />
-          <nodes x="752" y="408" />
-          <nodes x="752" y="616" />
-          <nodes x="691" y="616" />
-          <nodes x="576" y="616" />
+          <nodes x="976" y="320" />
+          <nodes x="816" y="320" />
+          <nodes x="768" y="320" />
+          <nodes x="768" y="616" />
+          <nodes x="667" y="616" />
+          <nodes x="552" y="616" />
         </nodes>
       </geometry>
     </relationship>
@@ -1102,13 +1002,14 @@
         <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
-          <nodes x="216" y="312" />
-          <nodes x="216" y="336" />
-          <nodes x="292" y="336" />
-          <nodes x="400" y="336" />
-          <nodes x="400" y="616" />
-          <nodes x="464" y="616" />
-          <nodes x="576" y="616" />
+          <nodes x="192" y="224" />
+          <nodes x="357" y="224" />
+          <nodes x="408" y="224" />
+          <nodes x="408" y="520" />
+          <nodes x="432" y="520" />
+          <nodes x="432" y="616" />
+          <nodes x="440" y="616" />
+          <nodes x="552" y="616" />
         </nodes>
       </geometry>
     </relationship>

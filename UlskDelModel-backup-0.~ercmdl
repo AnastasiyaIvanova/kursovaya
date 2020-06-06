@@ -311,6 +311,22 @@
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
+        <attribute id="55c5b5ceed98772a9b7726af30d35c968" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="totalVotes" />
+          <physical>
+            <item>
+              <string>Access</string>
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="totalVotes" />
+            </item>
+          </physical>
+          <geometry>
+            <position x="3" y="43" />
+            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
+            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
+            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
+            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
+          </geometry>
+        </attribute>
       </attributes>
       <geometry>
         <position x="144" y="288" />
@@ -329,12 +345,12 @@
         </item>
       </physical>
       <attributes>
-        <attribute id="892723259065936d48afe272821378173" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="true" comment="">
-          <logical name="rating" />
+        <attribute id="d1b663f8adc864882bfb50620e01ed1ee" domain="ca162f0d326ab16410d8ce62d23301261" isPrimary="false" isForeign="false" notNull="true" comment="">
+          <logical name="time" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="rating" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="time" />
             </item>
           </physical>
           <geometry>
@@ -345,12 +361,28 @@
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
-        <attribute id="d1b663f8adc864882bfb50620e01ed1ee" domain="ca162f0d326ab16410d8ce62d23301261" isPrimary="false" isForeign="false" notNull="true" comment="">
-          <logical name="time" />
+        <attribute id="6e66594501ef90f638c1878cd72429f0a" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
+          <logical name="Id" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="time" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
+            </item>
+          </physical>
+          <geometry>
+            <position x="3" y="3" />
+            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
+            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
+            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
+            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
+          </geometry>
+        </attribute>
+        <attribute id="892723259065936d48afe272821378173" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="true" comment="">
+          <logical name="sumVotes" />
+          <physical>
+            <item>
+              <string>Access</string>
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="sumVotes" />
             </item>
           </physical>
           <geometry>
@@ -361,16 +393,16 @@
             <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
           </geometry>
         </attribute>
-        <attribute id="6e66594501ef90f638c1878cd72429f0a" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
-          <logical name="User_Id" />
+        <attribute id="f3040a14ecfa7cbc8e16843ee7a3fabcc" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="totalVotes" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="User_Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="totalVotes" />
             </item>
           </physical>
           <geometry>
-            <position x="3" y="3" />
+            <position x="3" y="60" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -736,15 +768,63 @@
       </physical>
       <attributes>
         <attribute id="53e5e896ffacb3e5e9b1d498e3062060d" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="true" isForeign="true" notNull="true" comment="">
-          <logical name="User_Id" />
+          <logical name="Id" />
           <physical>
             <item>
               <string>Access</string>
-              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="User_Id" />
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="Id" />
             </item>
           </physical>
           <geometry>
             <position x="3" y="3" />
+            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
+            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
+            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
+            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
+          </geometry>
+        </attribute>
+        <attribute id="d253ba4e375e556f63ef891b8e7135cb4" domain="ac6a5acbcc7a0f3a3640c2f88190fc48e" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="name" />
+          <physical>
+            <item>
+              <string>Access</string>
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="name" />
+            </item>
+          </physical>
+          <geometry>
+            <position x="3" y="26" />
+            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
+            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
+            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
+            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
+          </geometry>
+        </attribute>
+        <attribute id="6be5af176fb51c0107141940aac33aeb9" domain="865a2fa5f849eca1796ccc88dacb78c4b" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="volume" />
+          <physical>
+            <item>
+              <string>Access</string>
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="volume" />
+            </item>
+          </physical>
+          <geometry>
+            <position x="3" y="43" />
+            <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
+            <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
+            <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
+            <fontColor a="255" r="0" g="0" b="128" isEmpty="false" />
+          </geometry>
+        </attribute>
+        <attribute id="9ea89c4c82a55717f2da62d7dbf2e4b00" domain="e02aaff7aeae574841c38f4758ad0f3ad" isPrimary="false" isForeign="false" notNull="false" comment="">
+          <logical name="speed" />
+          <physical>
+            <item>
+              <string>Access</string>
+              <GenericPhysicalAttribute xsi:type="PhysicalAccessAttribute" name="speed" />
+            </item>
+          </physical>
+          <geometry>
+            <position x="3" y="60" />
             <font name="Tahoma" size="10" bold="false" italic="false" underline="false" />
             <foreColor a="255" r="0" g="0" b="0" isEmpty="false" />
             <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
@@ -892,10 +972,10 @@
           <nodes x="488" y="200" />
           <nodes x="488" y="219" />
           <nodes x="488" y="232" />
-          <nodes x="392" y="232" />
-          <nodes x="392" y="304" />
-          <nodes x="327" y="304" />
-          <nodes x="232" y="304" />
+          <nodes x="400" y="232" />
+          <nodes x="400" y="312" />
+          <nodes x="292" y="312" />
+          <nodes x="216" y="312" />
         </nodes>
       </geometry>
     </relationship>
@@ -942,13 +1022,12 @@
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
           <nodes x="488" y="200" />
-          <nodes x="488" y="200" />
           <nodes x="488" y="219" />
           <nodes x="488" y="232" />
           <nodes x="680" y="232" />
-          <nodes x="680" y="312" />
-          <nodes x="728" y="312" />
-          <nodes x="816" y="312" />
+          <nodes x="680" y="328" />
+          <nodes x="728" y="328" />
+          <nodes x="800" y="328" />
         </nodes>
       </geometry>
     </relationship>
@@ -969,12 +1048,11 @@
         <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
-          <nodes x="816" y="312" />
-          <nodes x="816" y="351" />
-          <nodes x="808" y="352" />
-          <nodes x="808" y="464" />
-          <nodes x="816" y="464" />
-          <nodes x="904" y="464" />
+          <nodes x="800" y="328" />
+          <nodes x="800" y="368" />
+          <nodes x="800" y="488" />
+          <nodes x="816" y="488" />
+          <nodes x="888" y="488" />
         </nodes>
       </geometry>
     </relationship>
@@ -995,12 +1073,10 @@
         <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
-          <nodes x="816" y="312" />
-          <nodes x="816" y="351" />
-          <nodes x="816" y="392" />
-          <nodes x="776" y="392" />
-          <nodes x="776" y="584" />
-          <nodes x="752" y="584" />
+          <nodes x="800" y="328" />
+          <nodes x="800" y="368" />
+          <nodes x="800" y="408" />
+          <nodes x="752" y="408" />
           <nodes x="752" y="616" />
           <nodes x="691" y="616" />
           <nodes x="576" y="616" />
@@ -1024,9 +1100,9 @@
         <backColor a="0" r="0" g="0" b="0" isEmpty="true" />
         <fontColor a="255" r="0" g="0" b="0" isEmpty="false" />
         <nodes>
-          <nodes x="232" y="304" />
-          <nodes x="327" y="304" />
-          <nodes x="408" y="304" />
+          <nodes x="216" y="312" />
+          <nodes x="292" y="312" />
+          <nodes x="408" y="312" />
           <nodes x="408" y="616" />
           <nodes x="464" y="616" />
           <nodes x="576" y="616" />

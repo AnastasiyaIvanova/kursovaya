@@ -47,13 +47,16 @@ namespace UlskDel.Models
         [ForeignKey("User")]
         public int Id { get; set; }
         public User User { get; set; }
+        //сумма всех голосов
         public int sumVotes { get; set; }
+        //кол-во голосов
         public int totalVotes { get; set; }
         [Display(Name = "Рейтинг")]
         public double rating
         {
             get
             {
+                //диапазон возможных голосов
                  int[] votesRange = { 1, 2, 3, 4, 5 };
                  if (sumVotes > 0 && totalVotes > 0) {
                         float z = 1.64485f;
