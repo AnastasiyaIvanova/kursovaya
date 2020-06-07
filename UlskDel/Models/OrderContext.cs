@@ -90,6 +90,8 @@ namespace UlskDel.Models
         [ForeignKey("User")]
         public int Id { get; set; }
         public User User { get; set; }
+        [MaxLength(50)]
+        [Display(Name = "Имя")]
         public string Name { get; set; }
         public int sumVotes { get; set; }
         public int totalVotes { get; set; }

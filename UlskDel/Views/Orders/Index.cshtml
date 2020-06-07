@@ -81,7 +81,7 @@
                 <td>
                     @if (item.Status != "отправлен")
                     {
-                        @Html.ActionLink("Редактировать", "Edit", new { id = item.OrderId });
+                        @*@Html.ActionLink("Редактировать", "Edit", new { id = item.OrderId });*@
                     } |
                     @Html.ActionLink("Детали", "Details", new { id = item.OrderId }) |
                     @Html.ActionLink("Удалить", "Delete", new { id = item.OrderId })

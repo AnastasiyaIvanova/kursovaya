@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -52,10 +53,11 @@ namespace UlskDel.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Courier courier = db.Couriers.Include(t => t.Orders).FirstOrDefault(t => t.Id == id);
-            List<Order> meny_data = db.Orders.ToList();
+            DateTime now = DateTime.Now.Date;
+            List<Order> meny_data = db.Orders.Where(x => x.CourierId == id).ToList();
             if (searchString)
             {
-                meny_data = db.Orders.Where(t => t.CourierId == id && t.Date == DateTime.Now).ToList();
+                meny_data = db.Orders.Where(t => t.CourierId == id && t.Date.CompareTo(now) == 0).ToList();
                 //courier = db.Couriers.Include(t => t.Orders.Select(x => x.Date == DateTime.Now)).FirstOrDefault(t => t.Id == id);
             }
             ViewData["MyList"] = meny_data;
