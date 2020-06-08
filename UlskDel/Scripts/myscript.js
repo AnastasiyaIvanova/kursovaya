@@ -205,6 +205,7 @@ function onClick() {
                 $('#price').val(price);
                 price = price + "р. Это примерная стоимость доставки.Окончательная установится после взвешивания груза";
                 $('#message').text(price);
+                console.log(price);
                 map.geoObjects.add(route); //Рисуем маршрут на карте
             },
             function (error) {

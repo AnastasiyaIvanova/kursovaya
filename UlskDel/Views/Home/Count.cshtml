@@ -11,67 +11,92 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Заказ</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Address_Sender, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Address_Sender, new { htmlAttributes = new { @class = "form-control", @id = "suggest" } })
-                    @Html.ValidationMessageFor(model => model.Address_Sender, "", new { @class = "text-danger" })
-                </div>
-                <p id="notice">Адрес не найден</p>
+    <div class="form-horizontal">
+        <h4>Заказ</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address_Sender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address_Sender, new { htmlAttributes = new { @class = "form-control", @id = "suggest" } })
+                @Html.ValidationMessageFor(model => model.Address_Sender, "", new { @class = "text-danger" })
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Address_Receiver, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Address_Receiver, new { htmlAttributes = new { @class = "form-control", @id = "suggest2" } })
-                    @Html.ValidationMessageFor(model => model.Address_Receiver, "", new { @class = "text-danger" })
-                </div>
-                <p id="notice2">Адрес не найден</p>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control", @id = "Weight" } })
-                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control", @id = "Length" } })
-                    @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Width, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control", @id = "Width" } })
-                    @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control", @id = "Height" } })
-                    @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div id="map"></div>
-            <div id="footer">
-                <div id="messageHeader"></div>
-                <div id="message"></div>
-            </div>
-            <input type="button" value="Рассчитать" onclick="onClick()" />
+            <p id="notice">Адрес не найден</p>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Area_Sender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Area_Sender, new { htmlAttributes = new { @class = "form-control", @id = "area-sender", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Area_Sender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address_Receiver, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address_Receiver, new { htmlAttributes = new { @class = "form-control", @id = "suggest2" } })
+                @Html.ValidationMessageFor(model => model.Address_Receiver, "", new { @class = "text-danger" })
+            </div>
+            <p id="notice2">Адрес не найден</p>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Area_Receiver, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Area_Receiver, new { htmlAttributes = new { @class = "form-control", @id = "area-receiver", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Area_Receiver, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Width, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @id = "price", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="map"></div>
+        <div id="footer">
+            <div id="messageHeader"></div>
+            <div id="message"></div>
+        </div>
+
+        <input type="button" value="Рассчитать" onclick="onClick()" />
+    </div>
 
     }
 </div>
