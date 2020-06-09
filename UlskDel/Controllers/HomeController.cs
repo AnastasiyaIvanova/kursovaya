@@ -21,8 +21,7 @@ namespace UlskDel.Controllers
             ViewBag.Orders = orders;
             return View();
         }
-
-        //[Authorize(Roles = "user")]
+        
         public ActionResult About()
         {
             return View();
